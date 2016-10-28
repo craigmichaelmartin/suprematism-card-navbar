@@ -1,3 +1,84 @@
-<div style="padding-left:100px; padding-bottom: 200px">
-  <supre-card-navbar></supre-card-navbar>
-</div>
+<!---
+
+I was really hoping for a component api like:
+
+```html
+<supre-card-navbar>
+  <supre-card-navbar-item>
+    <supre-card-navbar-title>Segments</supre-card-navbar-top-menu-item>
+    <supre-card-navbar-cards>
+      <supre-card-navbar-card>
+        <supre-card-navbar-card-title>Library</supre-card-navbar-card-title>
+        <supre-card-navbar-card-icon><div class="CardNavbar-cardIcon icon ion-android-add-circle"></div></supre-card-navbar-card-icon>
+      </supre-card-navbar-card>
+    </supre-card-navbar-cards>
+  </supre-card-navbar-item>
+  ...
+</supre-card-navbar>
+```
+
+And then have the component split the titles into a `navbar-top-items` div,
+and the cards into a `navbar-sub-items` div. This would allow the item
+and cards to be coupled in the api, but distinct in the markup (out of necessity)
+
+Unfortanely, I was not able to accomplish this with ng2.
+-->
+
+<supre-card-navbar>
+  <supre-card-navbar-top-menu-item supreTabId="segments" [supreDefault]="true">Segments</supre-card-navbar-top-menu-item>
+  <supre-card-navbar-cards supreForTab="segments">
+    <supre-card-navbar-card supreForTab="segments" [supreDefault]="true" [supreUltimateDefault]="true">
+      <supre-card-navbar-card-title>Create</supre-card-navbar-card-title>
+      <supre-card-navbar-card-icon><div class="icon ion-android-add-circle"></div></supre-card-navbar-card-icon>
+    </supre-card-navbar-card>
+    <supre-card-navbar-card supreForTab="segments">
+      <supre-card-navbar-card-title>Library</supre-card-navbar-card-title>
+      <supre-card-navbar-card-icon><div class="icon ion-ios-list-outline"></div></supre-card-navbar-card-icon>
+    </supre-card-navbar-card>
+    <supre-card-navbar-card supreForTab="segments">
+      <supre-card-navbar-card-title>Compare</supre-card-navbar-card-title>
+      <supre-card-navbar-card-icon><div class="icon ion-ios-color-filter-outline"></div></supre-card-navbar-card-icon>
+    </supre-card-navbar-card>
+    <supre-card-navbar-card supreForTab="segments">
+      <supre-card-navbar-card-title>Forecast</supre-card-navbar-card-title>
+      <supre-card-navbar-card-icon><div class="icon ion-ios-glasses-outline"></div></supre-card-navbar-card-icon>
+    </supre-card-navbar-card>
+  </supre-card-navbar-cards>
+  <supre-card-navbar-top-menu-item supreTabId="campaigns">Campaigns</supre-card-navbar-top-menu-item>
+  <supre-card-navbar-cards supreForTab="campaigns">
+    <supre-card-navbar-card supreForTab="campaigns" [supreDefault]="true">
+      <supre-card-navbar-card-title>Option</supre-card-navbar-card-title>
+      <supre-card-navbar-card-icon><div class="icon ion-record"></div></supre-card-navbar-card-icon>
+    </supre-card-navbar-card>
+    <supre-card-navbar-card supreForTab="campaigns">
+      <supre-card-navbar-card-title>Another</supre-card-navbar-card-title>
+      <supre-card-navbar-card-icon><div class="icon ion-record"></div></supre-card-navbar-card-icon>
+    </supre-card-navbar-card>
+    <supre-card-navbar-card supreForTab="campaigns">
+      <supre-card-navbar-card-title>Last</supre-card-navbar-card-title>
+      <supre-card-navbar-card-icon><div class="icon ion-record"></div></supre-card-navbar-card-icon>
+    </supre-card-navbar-card>
+  </supre-card-navbar-cards>
+  <supre-card-navbar-top-menu-item supreTabId="inventory">Inventory</supre-card-navbar-top-menu-item>
+  <supre-card-navbar-cards supreForTab="inventory">
+    <supre-card-navbar-card supreForTab="inventory" [supreDefault]="true">
+      <supre-card-navbar-card-title>Choice</supre-card-navbar-card-title>
+      <supre-card-navbar-card-icon><div class="icon ion-record"></div></supre-card-navbar-card-icon>
+    </supre-card-navbar-card>
+  </supre-card-navbar-cards>
+  <supre-card-navbar-top-menu-item supreTabId="user">Mary Popins</supre-card-navbar-top-menu-item>
+  <supre-card-navbar-cards supreForTab="user">
+    <supre-card-navbar-card supreForTab="user">
+      <supre-card-navbar-card-title>Log Out</supre-card-navbar-card-title>
+      <supre-card-navbar-card-icon><div class="icon ion-log-out"></div></supre-card-navbar-card-icon>
+    </supre-card-navbar-card>
+    <supre-card-navbar-card supreForTab="user">
+      <supre-card-navbar-card-title>Settings</supre-card-navbar-card-title>
+      <supre-card-navbar-card-icon><div class="icon ion-ios-gear"></div></supre-card-navbar-card-icon>
+    </supre-card-navbar-card>
+    <supre-card-navbar-card supreForTab="user" supreStyle="footer">
+      <supre-card-navbar-card-title>Ford Motor Company</supre-card-navbar-card-title>
+      <supre-card-navbar-card-icon><img height="70px" src="../../src/the-G-raph.svg"></supre-card-navbar-card-icon>
+    </supre-card-navbar-card>
+  </supre-card-navbar-cards>
+</supre-card-navbar>

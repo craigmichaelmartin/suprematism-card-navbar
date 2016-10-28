@@ -1,0 +1,15 @@
+@import "card-navbar-top-menu-item.component.scss";
+
+:host {
+  margin-left: auto;
+}
+
+.CardNavbar-userMenuItem {
+  font-size: 11px;
+  width: auto;
+}
+.CardNavbar-userMenuIcon {
+  margin-right: 20px;
+  margin-left: 10px;
+  font-size: 26px;
+}

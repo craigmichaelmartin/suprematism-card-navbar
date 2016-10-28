@@ -1,0 +1,10 @@
+<div class="CardNavbar-card"
+     (mousedown)="style !== 'footer' && statusSource.next('preSelected')"
+     (mouseup)="style !== 'footer' && statusSource.next('selected')"
+     (mouseenter)="style !== 'footer' && statusSource.next('active')"
+     (mouseout)="style !== 'footer' && statusSource.next('inActive')"
+     [ngClass]="['is-' + (state$ | async), style === 'footer' ? 'CardNavbar-card--footer' : '']"
+>
+  <div class="CardNavbar-cardTitle"><ng-content select="supre-card-navbar-card-title"></ng-content></div>
+  <div class="CardNavbar-cardIcon"><ng-content select="supre-card-navbar-card-icon"></ng-content></div>
+</div>

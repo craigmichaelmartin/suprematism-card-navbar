@@ -1,0 +1,67 @@
+:host[suprestyle="footer"] {
+  display: block;
+  width: 100%; }
+
+.CardNavbar-card {
+  display: inline-block;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 100px;
+  width: 100px;
+  border: 2px dotted #999999;
+  border-radius: 12px;
+  cursor: pointer; }
+
+.CardNavbar-card--footer {
+  width: 100%;
+  border: none;
+  margin: 0;
+  cursor: default; }
+
+.CardNavbar-card.is-active {
+  border: 2px solid #0089d0; }
+
+.CardNavbar-card.is-preSelected {
+  border: 2px solid #0089d0;
+  background-color: rgba(0, 137, 208, 0.3); }
+
+.CardNavbar-card.is-selected {
+  border: 2px solid #0089d0;
+  background-color: #0089d0; }
+
+.CardNavbar-cardTitle {
+  margin-top: 22px;
+  font-size: 10px;
+  margin-bottom: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #999999;
+  font-weight: 600;
+  display: block; }
+
+.CardNavbar-card--footer .CardNavbar-cardTitle {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-transform: none; }
+
+.CardNavbar-cardIcon {
+  font-size: 40px;
+  text-align: center;
+  color: #999999; }
+
+.CardNavbar-cardTitle,
+.CardNavbar-cardIcon {
+  pointer-events: none; }
+
+.CardNavbar-card.is-active .CardNavbar-cardIcon,
+.CardNavbar-card.is-active .CardNavbar-cardTitle,
+.CardNavbar-card.is-preSelected .CardNavbar-cardIcon,
+.CardNavbar-card.is-preSelected .CardNavbar-cardTitle {
+  color: #0089d0; }
+
+.CardNavbar-card.is-selected .CardNavbar-cardIcon,
+.CardNavbar-card.is-selected .CardNavbar-cardTitle {
+  color: white; }
