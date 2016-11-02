@@ -11,11 +11,10 @@ import { StateManagerService } from '../../state-manager.service';
 })
 export class CardNavbarMenuItemComponent implements OnInit {
 
-  statusSource: Subject<any> = new Subject();
-  status$: Observable<any> = this.statusSource
-    .startWith('active');
+  statusSource: Subject<string> = new Subject<string>();
+  status$: Observable<string> = this.statusSource.startWith('active');
   isSelectedTab$: Observable<boolean>;
-  state$: Observable<any>;
+  state$: Observable<string>;
 
   @Input('supreTabId')
   tabId: string;
@@ -33,7 +32,7 @@ export class CardNavbarMenuItemComponent implements OnInit {
   ngOnInit() {
     this.status$
       .distinctUntilChanged()
-      .filter((obj) => obj.state === 'selected')
+      .filter((state) => state === 'selected')
       .mapTo(this.tabId)
       .subscribe((tabId) =>
         this.stateManagerService.updateModel((currentState) => {
@@ -45,7 +44,7 @@ export class CardNavbarMenuItemComponent implements OnInit {
       );
     this.status$
       .distinctUntilChanged()
-      .filter((obj) => obj.state === 'active')
+      .filter((state) => state === 'active')
       // .debounceTime(500)
       .mapTo(this.tabId)
       .subscribe((tabId) =>
@@ -57,7 +56,7 @@ export class CardNavbarMenuItemComponent implements OnInit {
       );
     this.status$
       .distinctUntilChanged()
-      .filter((obj) => obj.state === 'notActive')
+      .filter((state) => state === 'notActive')
       .mapTo(this.tabId)
       .subscribe((tabId) =>
         this.stateManagerService.updateModel((currentState) => {
@@ -72,45 +71,29 @@ export class CardNavbarMenuItemComponent implements OnInit {
         (selectedTab === this.tabId) || (!selectedTab && this.defaultTab)
       );
 
-    // this.state$ = Observable.combineLatest(this.status$, this.isSelectedTab$)
-    //   .map(([state, selected]) => selected ? 'selected' : state.state)
     this.state$ = this.status$.merge(
           this.stateManagerService.getModel
             .distinctUntilChanged()
             .filter((currentState) => currentState.activeTab !== this.tabId)
-            .mapTo({state: 'notActive'}),
+            .mapTo('notActive'),
           this.stateManagerService.getModel
             .distinctUntilChanged()
             .filter((currentState) => currentState.selectedTab !== this.tabId)
-            .mapTo({state: 'notActive'}),
+            .mapTo('notActive'),
           this.stateManagerService.getModel
             .distinctUntilChanged()
             .filter((currentState) => currentState.selectedTab === this.tabId)
-            .mapTo({state: 'selected'}),
+            .mapTo('selected'),
         )
         .combineLatest(this.isSelectedTab$)
-        .map(([state, selected]) => selected ? 'selected' : state.state);
+        .map(([state, selected]) => selected ? 'selected' : state);
 
-    // this.stateManagerService.getModel
-    //   .distinctUntilChanged()
-    //   .filter((currentState) => currentState.selectedTab !== this.tabId)
-    //   .mapTo({state: 'notActive'})
-    //   .subscribe((value) => {
-    //     this.statusSource.next(value);
-    //   });
-    // this.stateManagerService.getModel
-    //   .distinctUntilChanged()
-    //   .filter((currentState) => currentState.selectedTab === this.tabId)
-    //   .mapTo({state: 'selected'})
-    //   .subscribe((value) => {
-    //     this.statusSource.next(value);
-    //   });
     this.stateManagerService.getModel
       .distinctUntilChanged()
       .filter((currentState) => currentState.activeTab !== this.tabId)
-      .mapTo({state: 'notActive'})
-      .subscribe((value) => {
-        this.statusSource.next(value);
+      .mapTo('notActive')
+      .subscribe((state) => {
+        this.statusSource.next(state);
       });
   }
 

@@ -10,9 +10,9 @@ import { StateManagerService } from '../../state-manager.service';
 })
 export class CardNavbarCardsComponent implements OnInit {
 
-  show$: Observable<any>;
-  mouseInSource: Subject<any> = new Subject();
-  mouseIn$ = this.mouseInSource.startWith(false);
+  show$: Observable<boolean>;
+  mouseInSource: Subject<boolean> = new Subject<boolean>();
+  mouseIn$: Observable<boolean> = this.mouseInSource.startWith(false);
 
   @Input('supreForTab')
   forTab: string;

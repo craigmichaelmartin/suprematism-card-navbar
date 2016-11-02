@@ -24,10 +24,10 @@ export class CardNavbarCardComponent implements OnInit {
   defaultCardForAllTabs: boolean = false;
 
   cid: string;
-  statusSource: Subject<any> = new Subject();
-  status$: Observable<any> = this.statusSource.asObservable();
+  statusSource: Subject<string> = new Subject<string>();
+  status$: Observable<string> = this.statusSource.asObservable();
   isSelectedCard$: Observable<boolean>;
-  state$: Observable<any>;
+  state$: Observable<string>;
 
   constructor(private stateManagerService: StateManagerService) {}
 
