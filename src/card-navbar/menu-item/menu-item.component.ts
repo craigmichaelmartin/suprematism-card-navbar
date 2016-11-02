@@ -2,14 +2,14 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Subject }   from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { StateManagerService } from './state-manager.service';
+import { StateManagerService } from '../../state-manager.service';
 
 @Component({
-  selector: 'supre-card-navbar-top-menu-item',
-  template: require('./card-navbar-top-menu-item.component.html'),
-  styles: [require('./card-navbar-top-menu-item.component.css')]
+  selector: 'supre-card-navbar-menu-item',
+  template: require('./menu-item.component.html'),
+  styles: [require('./menu-item.component.css')]
 })
-export class CardNavbarTopMenuItemComponent implements OnInit {
+export class CardNavbarMenuItemComponent implements OnInit {
 
   statusSource: Subject<any> = new Subject();
   status$: Observable<any> = this.statusSource

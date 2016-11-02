@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, AfterContentInit } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { StateManagerService } from './state-manager.service';
+import { StateManagerService } from '../state-manager.service';
 
 @Component({
   selector: 'supre-card-navbar',

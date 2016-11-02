@@ -2,12 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/takeUntil';
-import { StateManagerService } from './state-manager.service';
+import { StateManagerService } from '../../../state-manager.service';
 
 @Component({
   selector: 'supre-card-navbar-card',
-  template: require('./card-navbar-card.component.html'),
-  styles: [require('./card-navbar-card.component.css')]
+  template: require('./card.component.html'),
+  styles: [require('./card.component.css')]
 })
 export class CardNavbarCardComponent implements OnInit {
 
