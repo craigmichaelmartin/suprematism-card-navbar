@@ -11,9 +11,8 @@ import { StateManagerService } from '../../state-manager.service';
 })
 export class CardNavbarMenuItemComponent implements OnInit {
 
-  statusSource: Subject<string> = new Subject<string>();
-  status$: Observable<string> = this.statusSource.startWith('active');
-  isSelectedTab$: Observable<boolean>;
+  localStateSource: Subject<string> = new Subject<string>();
+  localState$: Observable<string> = this.localStateSource.startWith('notActive');
   state$: Observable<string>;
 
   @Input('supreTabId')
@@ -29,72 +28,52 @@ export class CardNavbarMenuItemComponent implements OnInit {
     return document.querySelector('.js-cards').contains(($event.toElement || $event.relatedTarget));
   }
 
+  pushSelected() {
+    this.stateManagerService.updateModel((currentState) => {
+      const newState = Object.assign({}, currentState);
+      newState.selectedTab = this.tabId;
+      newState.selectedCard = void 0;
+      return newState;
+    });
+  }
+
+  pushPreSelected() {
+    this.localStateSource.next('preSelected');
+  }
+
+  pushActive() {
+    this.stateManagerService.updateModel((currentState) => {
+      const newState = Object.assign({}, currentState);
+      newState.activeTab = this.tabId;
+      return newState;
+    });
+  }
+
+  pushNotActive() {
+    this.stateManagerService.updateModel((currentState) => {
+      const newState = Object.assign({}, currentState);
+      newState.activeTab = void 0;
+      return newState;
+    });
+  }
+
   ngOnInit() {
-    this.status$
-      .distinctUntilChanged()
-      .filter((state) => state === 'selected')
-      .mapTo(this.tabId)
-      .subscribe((tabId) =>
-        this.stateManagerService.updateModel((currentState) => {
-          const newState = Object.assign({}, currentState);
-          newState.selectedTab = tabId;
-          newState.selectedCard = void 0;
-          return newState;
-        })
-      );
-    this.status$
-      .distinctUntilChanged()
-      .filter((state) => state === 'active')
-      // .debounceTime(500)
-      .mapTo(this.tabId)
-      .subscribe((tabId) =>
-        this.stateManagerService.updateModel((currentState) => {
-          const newState = Object.assign({}, currentState);
-          newState.activeTab = tabId;
-          return newState;
-        })
-      );
-    this.status$
-      .distinctUntilChanged()
-      .filter((state) => state === 'notActive')
-      .mapTo(this.tabId)
-      .subscribe((tabId) =>
-        this.stateManagerService.updateModel((currentState) => {
-          const newState = Object.assign({}, currentState);
-          newState.activeTab = void 0;
-          return newState;
-        })
-      );
-    this.isSelectedTab$ = this.stateManagerService.getModel
-      .distinctUntilChanged()
+    const isSelectedTab$ = this.stateManagerService.getModel
       .map(({selectedTab}) =>
-        (selectedTab === this.tabId) || (!selectedTab && this.defaultTab)
-      );
-
-    this.state$ = this.status$.merge(
-          this.stateManagerService.getModel
-            .distinctUntilChanged()
-            .filter((currentState) => currentState.activeTab !== this.tabId)
-            .mapTo('notActive'),
-          this.stateManagerService.getModel
-            .distinctUntilChanged()
-            .filter((currentState) => currentState.selectedTab !== this.tabId)
-            .mapTo('notActive'),
-          this.stateManagerService.getModel
-            .distinctUntilChanged()
-            .filter((currentState) => currentState.selectedTab === this.tabId)
-            .mapTo('selected'),
-        )
-        .combineLatest(this.isSelectedTab$)
-        .map(([state, selected]) => selected ? 'selected' : state);
-
-    this.stateManagerService.getModel
-      .distinctUntilChanged()
-      .filter((currentState) => currentState.activeTab !== this.tabId)
-      .mapTo('notActive')
-      .subscribe((state) => {
-        this.statusSource.next(state);
-      });
+        !!((selectedTab === this.tabId) || (!selectedTab && this.defaultTab)));
+    const notActive$ = this.stateManagerService.getModel
+      .filter(({activeTab, selectedTab}) =>
+        activeTab !== this.tabId || selectedTab !== this.tabId)
+      .mapTo('notActive');
+    const active$ = this.stateManagerService.getModel
+      .filter((currentState) => currentState.activeTab === this.tabId)
+      .mapTo('active');
+    const selected$ = this.stateManagerService.getModel
+      .filter((currentState) => currentState.selectedTab === this.tabId)
+      .mapTo('selected');
+    this.state$ = this.localState$.merge(notActive$, active$, selected$)
+      .combineLatest(isSelectedTab$)
+      .map(([state, selected]) => selected ? 'selected' : state);
   }
 
 }
