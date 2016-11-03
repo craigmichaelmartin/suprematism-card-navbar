@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as Rx from 'rxjs';
 import { Model } from './model';
+import { Observable } from 'rxjs/Observable';
 
 export interface ActionFunc {
   (currentState: Model): Model;
@@ -39,5 +40,11 @@ export class StateManagerService {
 
   updateModel(action: ActionFunc) {
     this.model.next(action);
+  }
+
+  updateModelFromObservable(stream: Observable<Model>) {
+    stream.subscribe((model: Model) =>
+      this.model.next((currentState) =>
+        Object.assign({}, currentState, model)));
   }
 }

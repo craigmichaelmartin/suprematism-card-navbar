@@ -1,9 +1,9 @@
 <div class="CardNavbar-topMenuItemContainer">
   <div
-    (mousedown)="pushPreSelected()"
-    (mouseup)="pushSelected()"
-    (mouseenter)="pushActive()"
-    (mouseleave)="!isInCards($event) && pushNotActive()"
+    (mousedown)="rawStateSource.next('preSelected')"
+    (mouseup)="rawStateSource.next('selected')"
+    (mouseenter)="rawStateSource.next('active')"
+    (mouseleave)="!isInCards($event) && rawStateSource.next('notActive')"
     class="CardNavbar-topMenuItem"
     [ngClass] = "['is-' + (state$ | async), tabId === 'user' ? 'CardNavbar-userMenuItem' : '']"
   >

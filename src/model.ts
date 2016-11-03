@@ -1,5 +1,5 @@
 export class Model {
-  activeTab: string;
-  selectedTab: string;
-  selectedCard: string;
+  activeTab?: string;
+  selectedTab?: string;
+  selectedCard?: string;
 }
