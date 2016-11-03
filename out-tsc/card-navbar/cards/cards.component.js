@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var Observable_1 = require('rxjs/Observable');
 var Subject_1 = require('rxjs/Subject');
-var state_manager_service_1 = require('./state-manager.service');
+var state_manager_service_1 = require('../../state-manager.service');
 var CardNavbarCardsComponent = (function () {
     function CardNavbarCardsComponent(stateManagerService) {
         this.stateManagerService = stateManagerService;
@@ -38,12 +38,12 @@ var CardNavbarCardsComponent = (function () {
     CardNavbarCardsComponent = __decorate([
         core_1.Component({
             selector: 'supre-card-navbar-cards',
-            template: require('./card-navbar-cards.component.html'),
-            styles: [require('./card-navbar-cards.component.css')]
+            template: require('./cards.component.html'),
+            styles: [require('./cards.component.css')]
         }), 
         __metadata('design:paramtypes', [state_manager_service_1.StateManagerService])
     ], CardNavbarCardsComponent);
     return CardNavbarCardsComponent;
 }());
 exports.CardNavbarCardsComponent = CardNavbarCardsComponent;
-//# sourceMappingURL=/Users/craigmartin/projects/suprematism-card-navbar/src/card-navbar-cards.component.js.map
+//# sourceMappingURL=/Users/craigmartin/projects/suprematism-card-navbar/src/card-navbar/cards/cards.component.js.map

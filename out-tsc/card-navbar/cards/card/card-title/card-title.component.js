@@ -15,12 +15,12 @@ var CardNavbarCardTitleComponent = (function () {
     CardNavbarCardTitleComponent = __decorate([
         core_1.Component({
             selector: 'supre-card-navbar-card-title',
-            template: require('./card-navbar-card-title.component.html'),
-            styles: [require('./card-navbar-card-title.component.css')]
+            template: require('./card-title.component.html'),
+            styles: [require('./card-title.component.css')]
         }), 
         __metadata('design:paramtypes', [])
     ], CardNavbarCardTitleComponent);
     return CardNavbarCardTitleComponent;
 }());
 exports.CardNavbarCardTitleComponent = CardNavbarCardTitleComponent;
-//# sourceMappingURL=/Users/craigmartin/projects/suprematism-card-navbar/src/card-navbar-card-title.component.js.map
+//# sourceMappingURL=/Users/craigmartin/projects/suprematism-card-navbar/src/card-navbar/cards/card/card-title/card-title.component.js.map

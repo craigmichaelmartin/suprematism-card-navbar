@@ -13,22 +13,20 @@ function __export(m) {
 }
 var common_1 = require('@angular/common');
 var state_manager_service_1 = require('./state-manager.service');
-var card_navbar_component_1 = require('./card-navbar.component');
-var card_navbar_top_menu_item_component_1 = require('./card-navbar-top-menu-item.component');
-var card_navbar_user_menu_item_component_1 = require('./card-navbar-user-menu-item.component');
-var card_navbar_cards_component_1 = require('./card-navbar-cards.component');
-var card_navbar_card_component_1 = require('./card-navbar-card.component');
-var card_navbar_card_title_component_1 = require('./card-navbar-card-title.component');
-var card_navbar_card_icon_component_1 = require('./card-navbar-card-icon.component');
+var card_navbar_component_1 = require('./card-navbar/card-navbar.component');
+var menu_item_component_1 = require('./card-navbar/menu-item/menu-item.component');
+var cards_component_1 = require('./card-navbar/cards/cards.component');
+var card_component_1 = require('./card-navbar/cards/card/card.component');
+var card_title_component_1 = require('./card-navbar/cards/card/card-title/card-title.component');
+var card_icon_component_1 = require('./card-navbar/cards/card/card-icon/card-icon.component');
 var core_1 = require('@angular/core');
 __export(require('./state-manager.service'));
-__export(require('./card-navbar.component'));
-__export(require('./card-navbar-top-menu-item.component'));
-__export(require('./card-navbar-user-menu-item.component'));
-__export(require('./card-navbar-cards.component'));
-__export(require('./card-navbar-card.component'));
-__export(require('./card-navbar-card-title.component'));
-__export(require('./card-navbar-card-icon.component'));
+__export(require('./card-navbar/card-navbar.component'));
+__export(require('./card-navbar/menu-item/menu-item.component'));
+__export(require('./card-navbar/cards/cards.component'));
+__export(require('./card-navbar/cards/card/card.component'));
+__export(require('./card-navbar/cards/card/card-title/card-title.component'));
+__export(require('./card-navbar/cards/card/card-icon/card-icon.component'));
 var CardNavbarModule = (function () {
     function CardNavbarModule() {
     }
@@ -42,30 +40,27 @@ var CardNavbarModule = (function () {
             ],
             declarations: [
                 card_navbar_component_1.CardNavbarComponent,
-                card_navbar_top_menu_item_component_1.CardNavbarTopMenuItemComponent,
-                card_navbar_user_menu_item_component_1.CardNavbarUserMenuItemComponent,
-                card_navbar_cards_component_1.CardNavbarCardsComponent,
-                card_navbar_card_component_1.CardNavbarCardComponent,
-                card_navbar_card_title_component_1.CardNavbarCardTitleComponent,
-                card_navbar_card_icon_component_1.CardNavbarCardIconComponent,
+                menu_item_component_1.CardNavbarMenuItemComponent,
+                cards_component_1.CardNavbarCardsComponent,
+                card_component_1.CardNavbarCardComponent,
+                card_title_component_1.CardNavbarCardTitleComponent,
+                card_icon_component_1.CardNavbarCardIconComponent,
             ],
             exports: [
                 card_navbar_component_1.CardNavbarComponent,
-                card_navbar_top_menu_item_component_1.CardNavbarTopMenuItemComponent,
-                card_navbar_user_menu_item_component_1.CardNavbarUserMenuItemComponent,
-                card_navbar_cards_component_1.CardNavbarCardsComponent,
-                card_navbar_card_component_1.CardNavbarCardComponent,
-                card_navbar_card_title_component_1.CardNavbarCardTitleComponent,
-                card_navbar_card_icon_component_1.CardNavbarCardIconComponent,
+                menu_item_component_1.CardNavbarMenuItemComponent,
+                cards_component_1.CardNavbarCardsComponent,
+                card_component_1.CardNavbarCardComponent,
+                card_title_component_1.CardNavbarCardTitleComponent,
+                card_icon_component_1.CardNavbarCardIconComponent,
             ],
             entryComponents: [
                 card_navbar_component_1.CardNavbarComponent,
-                card_navbar_top_menu_item_component_1.CardNavbarTopMenuItemComponent,
-                card_navbar_user_menu_item_component_1.CardNavbarUserMenuItemComponent,
-                card_navbar_cards_component_1.CardNavbarCardsComponent,
-                card_navbar_card_component_1.CardNavbarCardComponent,
-                card_navbar_card_title_component_1.CardNavbarCardTitleComponent,
-                card_navbar_card_icon_component_1.CardNavbarCardIconComponent,
+                menu_item_component_1.CardNavbarMenuItemComponent,
+                cards_component_1.CardNavbarCardsComponent,
+                card_component_1.CardNavbarCardComponent,
+                card_title_component_1.CardNavbarCardTitleComponent,
+                card_icon_component_1.CardNavbarCardIconComponent,
             ]
         }), 
         __metadata('design:paramtypes', [])

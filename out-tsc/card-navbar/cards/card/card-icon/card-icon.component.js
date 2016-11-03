@@ -9,18 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var CardNavbarUserMenuItemComponent = (function () {
-    function CardNavbarUserMenuItemComponent() {
+var CardNavbarCardIconComponent = (function () {
+    function CardNavbarCardIconComponent() {
     }
-    CardNavbarUserMenuItemComponent = __decorate([
+    CardNavbarCardIconComponent = __decorate([
         core_1.Component({
-            selector: 'supre-card-navbar-user-menu-item',
-            template: require('./card-navbar-user-menu-item.component.html'),
-            styles: [require('./card-navbar-user-menu-item.component.css')]
+            selector: 'supre-card-navbar-card-icon',
+            template: require('./card-icon.component.html'),
+            styles: [require('./card-icon.component.css')]
         }), 
         __metadata('design:paramtypes', [])
-    ], CardNavbarUserMenuItemComponent);
-    return CardNavbarUserMenuItemComponent;
+    ], CardNavbarCardIconComponent);
+    return CardNavbarCardIconComponent;
 }());
-exports.CardNavbarUserMenuItemComponent = CardNavbarUserMenuItemComponent;
-//# sourceMappingURL=/Users/craigmartin/projects/suprematism-card-navbar/src/card-navbar-user-menu-item.component.js.map
+exports.CardNavbarCardIconComponent = CardNavbarCardIconComponent;
+//# sourceMappingURL=/Users/craigmartin/projects/suprematism-card-navbar/src/card-navbar/cards/card/card-icon/card-icon.component.js.map

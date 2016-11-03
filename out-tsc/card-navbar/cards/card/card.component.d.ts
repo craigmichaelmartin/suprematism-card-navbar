@@ -2,7 +2,7 @@ import { OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/takeUntil';
-import { StateManagerService } from './state-manager.service';
+import { StateManagerService } from '../../../state-manager.service';
 export declare class CardNavbarCardComponent implements OnInit {
     private stateManagerService;
     style: string;
@@ -10,10 +10,10 @@ export declare class CardNavbarCardComponent implements OnInit {
     defaultCardForTab: boolean;
     defaultCardForAllTabs: boolean;
     cid: string;
-    statusSource: Subject<any>;
-    status$: Observable<any>;
+    statusSource: Subject<string>;
+    status$: Observable<string>;
     isSelectedCard$: Observable<boolean>;
-    state$: Observable<any>;
+    state$: Observable<string>;
     constructor(stateManagerService: StateManagerService);
     ngOnInit(): void;
 }

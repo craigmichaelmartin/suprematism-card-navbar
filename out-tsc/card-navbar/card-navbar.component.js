@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 require('rxjs/add/operator/map');
-var state_manager_service_1 = require('./state-manager.service');
+var state_manager_service_1 = require('../state-manager.service');
 var CardNavbarComponent = (function () {
     function CardNavbarComponent(stateManagerService) {
         this.stateManagerService = stateManagerService;
@@ -41,4 +41,4 @@ var CardNavbarComponent = (function () {
     return CardNavbarComponent;
 }());
 exports.CardNavbarComponent = CardNavbarComponent;
-//# sourceMappingURL=/Users/craigmartin/projects/suprematism-card-navbar/src/card-navbar.component.js.map
+//# sourceMappingURL=/Users/craigmartin/projects/suprematism-card-navbar/src/card-navbar/card-navbar.component.js.map
