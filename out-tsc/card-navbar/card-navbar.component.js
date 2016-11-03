@@ -16,15 +16,7 @@ var CardNavbarComponent = (function () {
         this.stateManagerService = stateManagerService;
     }
     CardNavbarComponent.prototype.ngOnInit = function () {
-        // this.stateManagerService.setModel = {selectedTab: this.defaultTab};
         this.stateManagerService.setModel = {};
-    };
-    CardNavbarComponent.prototype.ngAfterContentInit = function () {
-        // this.stateManagerService.updateModel((currentState) => {
-        //   const newState = Object.assign({}, currentState);
-        //   newState.selectedTab = this.defaultTab;
-        //   return newState;
-        // });
     };
     __decorate([
         core_1.Input('supreDefaultTab'), 

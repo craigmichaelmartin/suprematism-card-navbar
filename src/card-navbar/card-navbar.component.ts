@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, AfterContentInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { StateManagerService } from '../state-manager.service';
 
@@ -7,7 +7,7 @@ import { StateManagerService } from '../state-manager.service';
   template: require('./card-navbar.component.html'),
   styles: [require('./card-navbar.component.css')]
 })
-export class CardNavbarComponent implements OnInit, AfterContentInit {
+export class CardNavbarComponent implements OnInit {
 
   @Input('supreDefaultTab')
   defaultTab: string;
@@ -15,15 +15,6 @@ export class CardNavbarComponent implements OnInit, AfterContentInit {
   constructor(private stateManagerService: StateManagerService) {}
 
   ngOnInit() {
-    // this.stateManagerService.setModel = {selectedTab: this.defaultTab};
     this.stateManagerService.setModel = {};
-  }
-
-  ngAfterContentInit() {
-    // this.stateManagerService.updateModel((currentState) => {
-    //   const newState = Object.assign({}, currentState);
-    //   newState.selectedTab = this.defaultTab;
-    //   return newState;
-    // });
   }
 }
