@@ -25,9 +25,9 @@ Unfortanely, I was not able to accomplish this with ng2.
 -->
 
 <supre-card-navbar>
-  <supre-card-navbar-menu-item supreTabId="segments" [supreDefault]="true">Segments</supre-card-navbar-menu-item>
+  <supre-card-navbar-menu-item supreTabId="segments" [supreDefaultTab]="true">Segments</supre-card-navbar-menu-item>
   <supre-card-navbar-cards supreForTab="segments">
-    <supre-card-navbar-card supreForTab="segments" [supreDefault]="true" [supreUltimateDefault]="true">
+    <supre-card-navbar-card supreForTab="segments" [supreDefaultCardForTab]="true" [supreDefaultCard]="true">
       <supre-card-navbar-card-title>Create</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><div class="icon ion-android-add-circle"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>
@@ -46,7 +46,7 @@ Unfortanely, I was not able to accomplish this with ng2.
   </supre-card-navbar-cards>
   <supre-card-navbar-menu-item supreTabId="campaigns">Campaigns</supre-card-navbar-menu-item>
   <supre-card-navbar-cards supreForTab="campaigns">
-    <supre-card-navbar-card supreForTab="campaigns" [supreDefault]="true">
+    <supre-card-navbar-card supreForTab="campaigns" [supreDefaultCardForTab]="true">
       <supre-card-navbar-card-title>Option</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><div class="icon ion-record"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>
@@ -61,7 +61,7 @@ Unfortanely, I was not able to accomplish this with ng2.
   </supre-card-navbar-cards>
   <supre-card-navbar-menu-item supreTabId="inventory">Inventory</supre-card-navbar-menu-item>
   <supre-card-navbar-cards supreForTab="inventory">
-    <supre-card-navbar-card supreForTab="inventory" [supreDefault]="true">
+    <supre-card-navbar-card supreForTab="inventory" [supreDefaultCardForTab]="true">
       <supre-card-navbar-card-title>Choice</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><div class="icon ion-record"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>

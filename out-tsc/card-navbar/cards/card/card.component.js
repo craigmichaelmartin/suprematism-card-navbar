@@ -66,11 +66,11 @@ var CardNavbarCardComponent = (function () {
         __metadata('design:type', String)
     ], CardNavbarCardComponent.prototype, "forTab", void 0);
     __decorate([
-        core_1.Input('supreDefault'), 
+        core_1.Input('supreDefaultCardForTab'), 
         __metadata('design:type', Boolean)
     ], CardNavbarCardComponent.prototype, "defaultCardForTab", void 0);
     __decorate([
-        core_1.Input('supreUltimateDefault'), 
+        core_1.Input('supreDefaultCard'), 
         __metadata('design:type', Boolean)
     ], CardNavbarCardComponent.prototype, "defaultCardForAllTabs", void 0);
     CardNavbarCardComponent = __decorate([

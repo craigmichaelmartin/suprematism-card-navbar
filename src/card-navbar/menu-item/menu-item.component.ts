@@ -19,7 +19,7 @@ export class CardNavbarMenuItemComponent implements OnInit {
   @Input('supreTabId')
   tabId: string;
 
-  @Input('supreDefault')
+  @Input('supreDefaultTab')
   defaultTab: boolean = false;
 
   constructor(private stateManagerService: StateManagerService) {}

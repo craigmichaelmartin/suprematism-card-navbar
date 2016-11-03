@@ -93,7 +93,7 @@ var CardNavbarMenuItemComponent = (function () {
         __metadata('design:type', String)
     ], CardNavbarMenuItemComponent.prototype, "tabId", void 0);
     __decorate([
-        core_1.Input('supreDefault'), 
+        core_1.Input('supreDefaultTab'), 
         __metadata('design:type', Boolean)
     ], CardNavbarMenuItemComponent.prototype, "defaultTab", void 0);
     CardNavbarMenuItemComponent = __decorate([

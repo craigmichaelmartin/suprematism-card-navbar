@@ -17,10 +17,10 @@ export class CardNavbarCardComponent implements OnInit {
   @Input('supreForTab')
   forTab: string;
 
-  @Input('supreDefault')
+  @Input('supreDefaultCardForTab')
   defaultCardForTab: boolean = false;
 
-  @Input('supreUltimateDefault')
+  @Input('supreDefaultCard')
   defaultCardForAllTabs: boolean = false;
 
   cid: string;
