@@ -8,6 +8,6 @@
     [ngClass] = "['is-' + (state$ | async), tabId === 'user' ? 'CardNavbar-userMenuItem' : '']"
   >
     <ng-content></ng-content>
-    <div *ngIf="tabId === 'user'" class="CardNavbar-userMenuIcon icon ion-android-person"></div>
+    <span *ngIf="tabId === 'user'" class="icon-usericon CardNavbar-userMenuIcon"></span>
   </div>
 </div>

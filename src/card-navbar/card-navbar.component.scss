@@ -1,3 +1,5 @@
+@import "../scss/style.scss";
+
 $blue: rgba(0, 137, 208, 1);
 $blue-transparent: rgba(0, 137, 208, .3);
 $gray: #999999;
@@ -15,8 +17,9 @@ $gray: #999999;
 }
 .CardNavbar-title {
   margin-left: 85px;
-  height: 16px;
   width: 155px;
+  font-size: 14px;
+  color: white;
 }
 .GiraffeLogo {
   position: absolute;
