@@ -10,10 +10,13 @@ export declare class CardNavbarCardComponent implements OnInit {
     defaultCardForTab: boolean;
     defaultCardForAllTabs: boolean;
     cid: string;
-    statusSource: Subject<string>;
-    status$: Observable<string>;
-    isSelectedCard$: Observable<boolean>;
     state$: Observable<string>;
+    rawStateSource: Subject<string>;
+    localState$: Observable<string>;
+    stateManagerProxy$: Observable<{
+        selectedTab: string;
+        selectedCard: string;
+    }>;
     constructor(stateManagerService: StateManagerService);
     ngOnInit(): void;
 }
