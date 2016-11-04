@@ -1,8 +1,8 @@
 <div class="CardNavbar-card"
-     (mousedown)="style !== 'footer' && statusSource.next('preSelected')"
-     (mouseup)="style !== 'footer' && statusSource.next('selected')"
-     (mouseenter)="style !== 'footer' && statusSource.next('active')"
-     (mouseout)="style !== 'footer' && statusSource.next('inActive')"
+     (mousedown)="style !== 'footer' && rawStateSource.next('preSelected')"
+     (mouseup)="style !== 'footer' && rawStateSource.next('selected')"
+     (mouseenter)="style !== 'footer' && rawStateSource.next('active')"
+     (mouseout)="style !== 'footer' && rawStateSource.next('notActive')"
      [ngClass]="['is-' + (state$ | async), style === 'footer' ? 'CardNavbar-card--footer' : '']"
 >
   <div class="CardNavbar-cardTitle"><ng-content select="supre-card-navbar-card-title"></ng-content></div>

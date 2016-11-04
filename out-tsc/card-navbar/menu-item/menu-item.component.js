@@ -13,80 +13,70 @@ var Subject_1 = require('rxjs/Subject');
 require('rxjs/add/operator/map');
 var state_manager_service_1 = require('../../state-manager.service');
 var CardNavbarMenuItemComponent = (function () {
+    // ------ Constructor ------------------------------------------------------
     function CardNavbarMenuItemComponent(stateManagerService) {
+        var _this = this;
         this.stateManagerService = stateManagerService;
-        this.statusSource = new Subject_1.Subject();
-        this.status$ = this.statusSource.startWith('active');
+        // Emits events of raw data from the template
+        this.rawStateSource = new Subject_1.Subject();
+        // The stream of state kept locally
+        this.localState$ = this.rawStateSource
+            .filter(function (state) { return ['preSelected'].indexOf(state) > -1; });
+        // The stream of state kept in a service
+        this.stateManagerProxy$ = this.rawStateSource
+            .filter(function (state) { return ['selected', 'active', 'notActive'].indexOf(state) > -1; })
+            .map(function (state) {
+            if (state === 'selected') {
+                return { selectedTab: _this.tabId, selectedCard: void 0 };
+            }
+            else if (state === 'active') {
+                return { activeTab: _this.tabId };
+            }
+            else if (state === 'notActive') {
+                return { activeTab: void 0 };
+            }
+        });
         this.defaultTab = false;
     }
-    CardNavbarMenuItemComponent.prototype.isInCards = function ($event) {
-        // Todo: using document.querySelector doesn't seem like the angular way
-        return document.querySelector('.js-cards').contains(($event.toElement || $event.relatedTarget));
-    };
+    // ------ Lifecycle Hooks ---------------------------------------------------
     CardNavbarMenuItemComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.status$
-            .distinctUntilChanged()
-            .filter(function (state) { return state === 'selected'; })
-            .mapTo(this.tabId)
-            .subscribe(function (tabId) {
-            return _this.stateManagerService.updateModel(function (currentState) {
-                var newState = Object.assign({}, currentState);
-                newState.selectedTab = tabId;
-                newState.selectedCard = void 0;
-                return newState;
-            });
-        });
-        this.status$
-            .distinctUntilChanged()
-            .filter(function (state) { return state === 'active'; })
-            .mapTo(this.tabId)
-            .subscribe(function (tabId) {
-            return _this.stateManagerService.updateModel(function (currentState) {
-                var newState = Object.assign({}, currentState);
-                newState.activeTab = tabId;
-                return newState;
-            });
-        });
-        this.status$
-            .distinctUntilChanged()
-            .filter(function (state) { return state === 'notActive'; })
-            .mapTo(this.tabId)
-            .subscribe(function (tabId) {
-            return _this.stateManagerService.updateModel(function (currentState) {
-                var newState = Object.assign({}, currentState);
-                newState.activeTab = void 0;
-                return newState;
-            });
-        });
-        this.isSelectedTab$ = this.stateManagerService.getModel
-            .distinctUntilChanged()
+        // Update the service with the events from the local proxy stream
+        this.stateManagerService.updateModelFromObservable(this.stateManagerProxy$);
+        // A stream with the latest value of whether the tab is selected
+        var isSelectedTab$ = this.stateManagerService.getModel
             .map(function (_a) {
             var selectedTab = _a.selectedTab;
-            return (selectedTab === _this.tabId) || (!selectedTab && _this.defaultTab);
+            return !!((selectedTab === _this.tabId) || (!selectedTab && _this.defaultTab));
         });
-        this.state$ = this.status$.merge(this.stateManagerService.getModel
-            .distinctUntilChanged()
-            .filter(function (currentState) { return currentState.activeTab !== _this.tabId; })
-            .mapTo('notActive'), this.stateManagerService.getModel
-            .distinctUntilChanged()
-            .filter(function (currentState) { return currentState.selectedTab !== _this.tabId; })
-            .mapTo('notActive'), this.stateManagerService.getModel
-            .distinctUntilChanged()
+        // A stream derived from the service specific for notActive events
+        var notActive$ = this.stateManagerService.getModel
+            .filter(function (_a) {
+            var selectedTab = _a.selectedTab;
+            return selectedTab !== _this.tabId;
+        })
+            .mapTo('notActive');
+        // A stream derived from the service specific for selected events
+        var selected$ = this.stateManagerService.getModel
             .filter(function (currentState) { return currentState.selectedTab === _this.tabId; })
-            .mapTo('selected'))
-            .combineLatest(this.isSelectedTab$)
+            .mapTo('selected');
+        // A stream derived from the service specific for active events
+        var active$ = this.stateManagerService.getModel
+            .filter(function (currentState) { return currentState.activeTab === _this.tabId; })
+            .mapTo('active');
+        // The state stream to which template listens
+        this.state$ = this.localState$.merge(notActive$, active$, selected$)
+            .combineLatest(isSelectedTab$)
             .map(function (_a) {
             var state = _a[0], selected = _a[1];
             return selected ? 'selected' : state;
         });
-        this.stateManagerService.getModel
-            .distinctUntilChanged()
-            .filter(function (currentState) { return currentState.activeTab !== _this.tabId; })
-            .mapTo('notActive')
-            .subscribe(function (state) {
-            _this.statusSource.next(state);
-        });
+    };
+    // ------ Public Methods ---------------------------------------------------
+    CardNavbarMenuItemComponent.prototype.isInCards = function ($event) {
+        // Todo: using document.querySelector doesn't seem like the angular way
+        var el = $event.toElement || $event.relatedTarget;
+        return document.querySelector('.js-cards').contains(el);
     };
     __decorate([
         core_1.Input('supreTabId'), 

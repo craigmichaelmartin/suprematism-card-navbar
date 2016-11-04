@@ -45,6 +45,14 @@ var StateManagerService = (function () {
     StateManagerService.prototype.updateModel = function (action) {
         this.model.next(action);
     };
+    StateManagerService.prototype.updateModelFromObservable = function (stream) {
+        var _this = this;
+        stream.subscribe(function (model) {
+            return _this.model.next(function (currentState) {
+                return Object.assign({}, currentState, model);
+            });
+        });
+    };
     StateManagerService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

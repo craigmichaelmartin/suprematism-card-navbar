@@ -21,7 +21,12 @@ var CardNavbarCardsComponent = (function () {
     CardNavbarCardsComponent.prototype.ngOnInit = function () {
         var _this = this;
         var isActiveTab$ = this.stateManagerService.getModel
-            .map(function (currentState) { return _this.forTab === currentState.activeTab; });
+            .switchMap(function (_a) {
+            var activeTab = _a.activeTab;
+            return _this.forTab === activeTab
+                ? Observable_1.Observable.interval(500).mapTo(true).take(1)
+                : Observable_1.Observable.of(false);
+        });
         this.show$ = Observable_1.Observable.merge(isActiveTab$, this.mouseIn$);
         this.mouseIn$.subscribe(function (mouseIn) {
             _this.stateManagerService.updateModel(function (currentState) {

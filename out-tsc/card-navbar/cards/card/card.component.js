@@ -13,45 +13,60 @@ var Subject_1 = require('rxjs/Subject');
 require('rxjs/add/operator/takeUntil');
 var state_manager_service_1 = require('../../../state-manager.service');
 var CardNavbarCardComponent = (function () {
+    // ------ Constructor -------------------------------------------------------
     function CardNavbarCardComponent(stateManagerService) {
+        var _this = this;
         this.stateManagerService = stateManagerService;
         this.defaultCardForTab = false;
         this.defaultCardForAllTabs = false;
-        this.statusSource = new Subject_1.Subject();
-        this.status$ = this.statusSource.asObservable();
+        // ------ Properties -------------------------------------------------------
+        // A unique indentifier for the component
+        this.cid = state_manager_service_1.StateManagerService.getUniqueId();
+        // Emits events of raw data from the template
+        this.rawStateSource = new Subject_1.Subject();
+        // The stream of state kept locally
+        this.localState$ = this.rawStateSource
+            .filter(function (state) {
+            return ['notActive', 'active', 'preSelected'].indexOf(state) > -1;
+        });
+        // The stream of state kept in a service
+        this.stateManagerProxy$ = this.rawStateSource
+            .filter(function (state) { return ['selected'].indexOf(state) > -1; })
+            .map(function (state) { return ({ selectedTab: _this.forTab, selectedCard: _this.cid }); });
     }
+    // ------ Lifecycle Hooks ---------------------------------------------------
     CardNavbarCardComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.cid = state_manager_service_1.StateManagerService.getUniqueId();
-        this.status$
-            .filter(function (state) { return state === 'selected'; })
-            .mapTo({ forTab: this.forTab, cid: this.cid })
-            .subscribe(function (_a) {
-            var forTab = _a.forTab, cid = _a.cid;
-            return _this.stateManagerService.updateModel(function (currentState) {
-                var newState = Object.assign({}, currentState);
-                newState.selectedTab = forTab;
-                newState.selectedCard = cid;
-                return newState;
-            });
-        });
-        this.isSelectedCard$ = this.stateManagerService.getModel
+        // Update the service with the events from the local proxy stream
+        this.stateManagerService.updateModelFromObservable(this.stateManagerProxy$);
+        // A stream with the latest value of whether the card is selected
+        var isSelectedCard$ = this.stateManagerService.getModel
             .distinctUntilChanged()
             .map(function (_a) {
             var selectedTab = _a.selectedTab, selectedCard = _a.selectedCard;
-            return (selectedTab === _this.forTab && selectedCard === _this.cid)
-                || (selectedTab === _this.forTab && !selectedCard && _this.defaultCardForTab)
-                || (!selectedTab && !selectedCard && _this.defaultCardForAllTabs);
+            return !!((selectedTab === _this.forTab && selectedCard === _this.cid)
+                || (selectedTab === _this.forTab && !selectedCard
+                    && _this.defaultCardForTab)
+                || (!selectedTab && !selectedCard && _this.defaultCardForAllTabs));
         });
-        this.state$ = this.status$
-            .merge(this.stateManagerService.getModel
-            .distinctUntilChanged()
+        // A stream derived from the service specific for notActive events
+        var notActive$ = this.stateManagerService.getModel
             .filter(function (_a) {
-            var selectedCard = _a.selectedCard, selectedTab = _a.selectedTab;
-            return selectedTab !== _this.forTab && selectedCard !== _this.cid;
+            var selectedTab = _a.selectedTab, selectedCard = _a.selectedCard;
+            return (selectedTab !== _this.forTab)
+                || (selectedTab === _this.forTab && selectedCard !== _this.cid);
         })
-            .mapTo('notActive'))
-            .combineLatest(this.isSelectedCard$)
+            .mapTo('notActive');
+        // A stream derived from the service specific for selected events
+        var selected$ = this.stateManagerService.getModel
+            .filter(function (_a) {
+            var selectedTab = _a.selectedTab, selectedCard = _a.selectedCard;
+            return selectedTab === _this.forTab && selectedCard === _this.cid;
+        })
+            .mapTo('selected');
+        // The state stream to which template listens
+        this.state$ = this.localState$.merge(notActive$, selected$)
+            .combineLatest(isSelectedCard$)
             .map(function (_a) {
             var state = _a[0], selected = _a[1];
             return selected ? 'selected' : state;
