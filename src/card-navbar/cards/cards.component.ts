@@ -21,12 +21,15 @@ export class CardNavbarCardsComponent implements OnInit {
 
   ngOnInit() {
     const isActiveTab$ = this.stateManagerService.getModel
-      .switchMap(({activeTab}) =>
+      .map(({activeTab}) => activeTab)
+      .distinctUntilChanged()
+      .switchMap((activeTab) =>
         this.forTab === activeTab
           ? Observable.interval(500).mapTo(true).take(1)
-          : Observable.of(false));
+          : Observable.interval(100).mapTo(false).take(1));
 
     this.show$ = Observable.merge(isActiveTab$, this.mouseIn$);
+
     this.mouseIn$.subscribe((mouseIn) => {
       this.stateManagerService.updateModel((currentState) => {
         const newState = Object.assign({}, currentState);

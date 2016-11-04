@@ -48,7 +48,7 @@ export class CardNavbarCardComponent implements OnInit {
   // The stream of state kept in a service
   stateManagerProxy$ = this.rawStateSource
     .filter((state) => ['selected'].indexOf(state) > -1)
-    .map((state) => ({selectedTab: this.forTab, selectedCard: this.cid}));
+    .map((state) => ({selectedTab: this.forTab, selectedCard: this.cid, activeTab: void 0}));
 
 
   // ------ Constructor -------------------------------------------------------

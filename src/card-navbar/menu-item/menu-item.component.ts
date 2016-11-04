@@ -28,7 +28,7 @@ export class CardNavbarMenuItemComponent implements OnInit {
     .filter((state) => ['selected', 'active', 'notActive'].indexOf(state) > -1)
     .map((state) => {
       if (state === 'selected') {
-        return { selectedTab: this.tabId, selectedCard: void 0 };
+        return { selectedTab: this.tabId, selectedCard: void 0, activeTab: void 0 };
       } else if (state === 'active') {
         return { activeTab: this.tabId };
       } else if (state === 'notActive') {
