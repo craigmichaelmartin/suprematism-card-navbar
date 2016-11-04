@@ -16,7 +16,7 @@ export class CardNavbarMenuItemComponent implements OnInit {
   // The stream the template reads from for its state values
   state$: Observable<string>;
 
-  // Emits events of raw datafrom the template
+  // Emits events of raw data from the template
   rawStateSource: Subject<any> = new Subject();
 
   // The stream of state kept locally
@@ -54,22 +54,31 @@ export class CardNavbarMenuItemComponent implements OnInit {
   // ------ Lifecycle Hooks ---------------------------------------------------
 
   ngOnInit() {
+    // Update the service with the events from the local proxy stream
     this.stateManagerService.updateModelFromObservable(
-      this.stateManagerProxy$
-    );
+      this.stateManagerProxy$);
+
+    // A stream with the latest value of whether the tab is selected
     const isSelectedTab$ = this.stateManagerService.getModel
       .map(({selectedTab}) =>
         !!((selectedTab === this.tabId) || (!selectedTab && this.defaultTab)));
+
+    // A stream derived from the service specific for notActive events
     const notActive$ = this.stateManagerService.getModel
-      .filter(({activeTab, selectedTab}) =>
-        activeTab !== this.tabId || selectedTab !== this.tabId)
+      .filter(({selectedTab}) => selectedTab !== this.tabId)
       .mapTo('notActive');
-    const active$ = this.stateManagerService.getModel
-      .filter((currentState) => currentState.activeTab === this.tabId)
-      .mapTo('active');
+
+    // A stream derived from the service specific for selected events
     const selected$ = this.stateManagerService.getModel
       .filter((currentState) => currentState.selectedTab === this.tabId)
       .mapTo('selected');
+
+    // A stream derived from the service specific for active events
+    const active$ = this.stateManagerService.getModel
+      .filter((currentState) => currentState.activeTab === this.tabId)
+      .mapTo('active');
+
+    // The state stream to which template listens
     this.state$ = this.localState$.merge(notActive$, active$, selected$)
       .combineLatest(isSelectedTab$)
       .map(([state, selected]) => selected ? 'selected' : state);
