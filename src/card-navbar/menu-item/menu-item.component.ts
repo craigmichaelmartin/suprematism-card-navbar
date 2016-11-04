@@ -45,6 +45,9 @@ export class CardNavbarMenuItemComponent implements OnInit {
   @Input('supreDefaultTab')
   defaultTab: boolean = false;
 
+  @Input('supreRouterLink')
+  routerLink: string;
+
 
   // ------ Constructor ------------------------------------------------------
 

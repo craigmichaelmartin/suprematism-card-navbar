@@ -9,6 +9,8 @@ $gray: #999999;
 }
 
 .CardNavbar-cards {
+  position: absolute;
+  width: 100%;
   display: flex;
   align-items: center;
   background-color: white;

@@ -1,18 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule }   from '@angular/router';
 
-import { AppComponent } from './app.component';
+import { PageComponent } from './page.component';
+import { MainComponent } from './main.component';
 import { CardNavbarModule } from '../../src/index';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    PageComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
-    CardNavbarModule
+    CardNavbarModule,
+    RouterModule.forRoot([
+      { path: '', component: PageComponent },
+      { path: ':one/:two', component: PageComponent }
+    ])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [MainComponent]
 })
 export class AppModule { }

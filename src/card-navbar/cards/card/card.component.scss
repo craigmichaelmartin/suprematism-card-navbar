@@ -2,6 +2,11 @@ $blue: rgba(0, 137, 208, 1);
 $blue-transparent: rgba(0, 137, 208, .3);
 $gray: #999999;
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 :host[suprestyle="footer"] {
   display: block;
   width: 100%;

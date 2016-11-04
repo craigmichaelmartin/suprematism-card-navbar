@@ -7,7 +7,7 @@
     class="CardNavbar-topMenuItem"
     [ngClass] = "['is-' + (state$ | async), tabId === 'user' ? 'CardNavbar-userMenuItem' : '']"
   >
-    <ng-content></ng-content>
+    <a [routerLink]="routerLink"><ng-content></ng-content></a>
     <span *ngIf="tabId === 'user'" class="icon-usericon CardNavbar-userMenuIcon"></span>
   </div>
 </div>

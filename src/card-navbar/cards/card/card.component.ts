@@ -25,6 +25,9 @@ export class CardNavbarCardComponent implements OnInit {
   @Input('supreDefaultCard')
   defaultCardForAllTabs: boolean = false;
 
+  @Input('supreRouterLink')
+  routerLink: string;
+
 
   // ------ Properties -------------------------------------------------------
 
