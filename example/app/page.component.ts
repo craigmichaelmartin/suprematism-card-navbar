@@ -8,15 +8,15 @@ declare var require: any;
 })
 export class PageComponent implements OnInit {
 
-  one: string;
-  two: string;
+  selectedTab: string;
+  selectedCard: string;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
-      this.one = params['one'];
-      this.two = params['two'];
+      this.selectedTab = params['selectedTab'];
+      this.selectedCard = params['selectedCard'];
     });
   }
 

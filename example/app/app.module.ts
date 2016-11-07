@@ -16,7 +16,7 @@ import { CardNavbarModule } from '../../src/index';
     CardNavbarModule,
     RouterModule.forRoot([
       { path: '', component: PageComponent },
-      { path: ':one/:two', component: PageComponent }
+      { path: ':selectedTab/:selectedCard', component: PageComponent }
     ])
   ],
   providers: [],
