@@ -1,81 +1,59 @@
 <!---
 
-I was really hoping for a component api like:
-
-```html
-<supre-card-navbar>
-  <supre-card-navbar-item>
-    <supre-card-navbar-title>Segments</supre-card-navbar-menu-item>
-    <supre-card-navbar-cards>
-      <supre-card-navbar-card>
-        <supre-card-navbar-card-title>Library</supre-card-navbar-card-title>
-        <supre-card-navbar-card-icon><div class="CardNavbar-cardIcon icon ion-android-add-circle"></div></supre-card-navbar-card-icon>
-      </supre-card-navbar-card>
-    </supre-card-navbar-cards>
-  </supre-card-navbar-item>
-  ...
-</supre-card-navbar>
-```
-
-And then have the component split the titles into a `navbar-items` div,
-and the cards into a `navbar-sub-items` div. This would allow the item
-and cards to be coupled in the api, but distinct in the markup (out of necessity)
-
-Unfortanely, I was not able to accomplish this with ng2.
 -->
-<supre-card-navbar>
-  <supre-card-navbar-menu-item supreTabId="segments" supreRouterLink='segments/create' [supreDefaultTab]="true">Segments</supre-card-navbar-menu-item>
+<supre-card-navbar [supreSelectedTab]="selectedTab" [supreSelectedCard]="selectedCard">
+  <supre-card-navbar-menu-item supreTabId="segments" supreRouterLink='segments/create'>Segments</supre-card-navbar-menu-item>
   <supre-card-navbar-cards supreForTab="segments">
-    <supre-card-navbar-card supreForTab="segments" supreRouterLink='segments/create' [supreDefaultCardForTab]="true" [supreDefaultCard]="true">
+    <supre-card-navbar-card supreForTab="segments" supreCardId="create" supreRouterLink [supreDefaultCardForTab]="true">
       <supre-card-navbar-card-title>Create</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><div class="icon ion-android-add-circle"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>
-    <supre-card-navbar-card supreForTab="segments" supreRouterLink='segments/library'>
+    <supre-card-navbar-card supreForTab="segments" supreCardId="library" supreRouterLink>
       <supre-card-navbar-card-title>Library</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><div class="icon ion-ios-list-outline"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>
-    <supre-card-navbar-card supreForTab="segments" supreRouterLink='segments/compare'>
+    <supre-card-navbar-card supreForTab="segments" supreCardId="compare" supreRouterLink>
       <supre-card-navbar-card-title>Compare</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><div class="icon ion-ios-color-filter-outline"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>
-    <supre-card-navbar-card supreForTab="segments" supreRouterLink='segments/forecast'>
+    <supre-card-navbar-card supreForTab="segments" supreCardId="forecast" supreRouterLink>
       <supre-card-navbar-card-title>Forecast</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><div class="icon ion-ios-glasses-outline"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>
   </supre-card-navbar-cards>
   <supre-card-navbar-menu-item supreTabId="campaigns" supreRouterLink='campaigns/option'>Campaigns</supre-card-navbar-menu-item>
   <supre-card-navbar-cards supreForTab="campaigns">
-    <supre-card-navbar-card supreForTab="campaigns" supreRouterLink='campaigns/option' [supreDefaultCardForTab]="true">
+    <supre-card-navbar-card supreForTab="campaigns" supreCardId="option" supreRouterLink [supreDefaultCardForTab]="true">
       <supre-card-navbar-card-title>Option</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><div class="icon ion-record"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>
-    <supre-card-navbar-card supreForTab="campaigns" supreRouterLink='campaigns/another'>
+    <supre-card-navbar-card supreForTab="campaigns" supreCardId="another" supreRouterLink>
       <supre-card-navbar-card-title>Another</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><div class="icon ion-record"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>
-    <supre-card-navbar-card supreForTab="campaigns" supreRouterLink='campaigns/last'>
+    <supre-card-navbar-card supreForTab="campaigns" supreCardId="last" supreRouterLink>
       <supre-card-navbar-card-title>Last</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><div class="icon ion-record"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>
   </supre-card-navbar-cards>
   <supre-card-navbar-menu-item supreTabId="inventory" supreRouterLink='inventory/choice'>Inventory</supre-card-navbar-menu-item>
   <supre-card-navbar-cards supreForTab="inventory">
-    <supre-card-navbar-card supreForTab="inventory" supreRouterLink='inventory/choice' [supreDefaultCardForTab]="true">
+    <supre-card-navbar-card supreForTab="inventory" supreCardId="choice" supreRouterLink [supreDefaultCardForTab]="true">
       <supre-card-navbar-card-title>Choice</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><div class="icon ion-record"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>
   </supre-card-navbar-cards>
   <supre-card-navbar-menu-item supreTabId="user" supreRouterLink="user/settings">Mary Popins</supre-card-navbar-menu-item>
   <supre-card-navbar-cards supreForTab="user">
-    <supre-card-navbar-card supreForTab="user">
+    <supre-card-navbar-card supreForTab="user" supreCardId="logout" supreRouterLink>
       <supre-card-navbar-card-title>Log Out</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><div class="icon ion-log-out"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>
-    <supre-card-navbar-card supreForTab="user" supreRouterLink="user/settings" [supreDefaultCardForTab]="true">
+    <supre-card-navbar-card supreForTab="user" supreCardId="settings" supreRouterLink [supreDefaultCardForTab]="true">
       <supre-card-navbar-card-title>Settings</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><div class="icon ion-ios-gear"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>
-    <supre-card-navbar-card supreForTab="user" supreStyle="footer">
+    <supre-card-navbar-card supreForTab="user" supreStyle="footer" supreCardId="company" supreRouterLink>
       <supre-card-navbar-card-title>Ford Motor Company</supre-card-navbar-card-title>
       <supre-card-navbar-card-icon><img height="70px" src="../../src/images/the-G-raph.svg"></supre-card-navbar-card-icon>
     </supre-card-navbar-card>

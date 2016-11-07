@@ -42,9 +42,6 @@ export class CardNavbarMenuItemComponent implements OnInit {
   @Input('supreTabId')
   tabId: string;
 
-  @Input('supreDefaultTab')
-  defaultTab: boolean = false;
-
   @Input('supreRouterLink')
   routerLink: string;
 
@@ -63,8 +60,7 @@ export class CardNavbarMenuItemComponent implements OnInit {
 
     // A stream with the latest value of whether the tab is selected
     const isSelectedTab$ = this.stateManagerService.getModel
-      .map(({selectedTab}) =>
-        !!((selectedTab === this.tabId) || (!selectedTab && this.defaultTab)));
+      .map(({selectedTab}) => !!(selectedTab === this.tabId));
 
     // A stream derived from the service specific for notActive events
     const notActive$ = this.stateManagerService.getModel

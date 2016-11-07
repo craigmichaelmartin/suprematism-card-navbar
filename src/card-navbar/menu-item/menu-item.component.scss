@@ -11,6 +11,7 @@ a {
 
 :host {
   height: 100%;
+  display: flex;
 }
 :host[supretabid="user"] {
   margin-left: auto;

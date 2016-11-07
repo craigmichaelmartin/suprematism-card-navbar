@@ -1,4 +1,4 @@
-<div class="CardNavbar-topMenuItemContainer">
+<a [routerLink]="routerLink" class="CardNavbar-topMenuItemContainer">
   <div
     (mousedown)="rawStateSource.next('preSelected')"
     (mouseup)="rawStateSource.next('selected')"
@@ -7,7 +7,7 @@
     class="CardNavbar-topMenuItem"
     [ngClass] = "['is-' + (state$ | async), tabId === 'user' ? 'CardNavbar-userMenuItem' : '']"
   >
-    <a [routerLink]="routerLink"><ng-content></ng-content></a>
+    <ng-content></ng-content>
     <span *ngIf="tabId === 'user'" class="icon-usericon CardNavbar-userMenuIcon"></span>
   </div>
-</div>
+</a>
