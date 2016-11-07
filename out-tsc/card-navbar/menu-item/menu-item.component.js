@@ -27,7 +27,7 @@ var CardNavbarMenuItemComponent = (function () {
             .filter(function (state) { return ['selected', 'active', 'notActive'].indexOf(state) > -1; })
             .map(function (state) {
             if (state === 'selected') {
-                return { selectedTab: _this.tabId, selectedCard: void 0 };
+                return { selectedTab: _this.tabId, selectedCard: void 0, activeTab: void 0 };
             }
             else if (state === 'active') {
                 return { activeTab: _this.tabId };
@@ -36,7 +36,6 @@ var CardNavbarMenuItemComponent = (function () {
                 return { activeTab: void 0 };
             }
         });
-        this.defaultTab = false;
     }
     // ------ Lifecycle Hooks ---------------------------------------------------
     CardNavbarMenuItemComponent.prototype.ngOnInit = function () {
@@ -47,7 +46,7 @@ var CardNavbarMenuItemComponent = (function () {
         var isSelectedTab$ = this.stateManagerService.getModel
             .map(function (_a) {
             var selectedTab = _a.selectedTab;
-            return !!((selectedTab === _this.tabId) || (!selectedTab && _this.defaultTab));
+            return !!(selectedTab === _this.tabId);
         });
         // A stream derived from the service specific for notActive events
         var notActive$ = this.stateManagerService.getModel
@@ -83,9 +82,9 @@ var CardNavbarMenuItemComponent = (function () {
         __metadata('design:type', String)
     ], CardNavbarMenuItemComponent.prototype, "tabId", void 0);
     __decorate([
-        core_1.Input('supreDefaultTab'), 
-        __metadata('design:type', Boolean)
-    ], CardNavbarMenuItemComponent.prototype, "defaultTab", void 0);
+        core_1.Input('supreRouterLink'), 
+        __metadata('design:type', String)
+    ], CardNavbarMenuItemComponent.prototype, "routerLink", void 0);
     CardNavbarMenuItemComponent = __decorate([
         core_1.Component({
             selector: 'supre-card-navbar-menu-item',

@@ -18,10 +18,6 @@ var CardNavbarCardComponent = (function () {
         var _this = this;
         this.stateManagerService = stateManagerService;
         this.defaultCardForTab = false;
-        this.defaultCardForAllTabs = false;
-        // ------ Properties -------------------------------------------------------
-        // A unique indentifier for the component
-        this.cid = state_manager_service_1.StateManagerService.getUniqueId();
         // Emits events of raw data from the template
         this.rawStateSource = new Subject_1.Subject();
         // The stream of state kept locally
@@ -32,8 +28,23 @@ var CardNavbarCardComponent = (function () {
         // The stream of state kept in a service
         this.stateManagerProxy$ = this.rawStateSource
             .filter(function (state) { return ['selected'].indexOf(state) > -1; })
-            .map(function (state) { return ({ selectedTab: _this.forTab, selectedCard: _this.cid }); });
+            .map(function (state) { return ({ selectedTab: _this.forTab, selectedCard: _this.cardId, activeTab: void 0 }); });
     }
+    Object.defineProperty(CardNavbarCardComponent.prototype, "supreRouterLink", {
+        set: function (routerLink) {
+            if (routerLink === '') {
+                this.routerLink = this.forTab + "/" + this.cardId;
+            }
+            else if (routerLink) {
+                this.routerLink = routerLink;
+            }
+            else {
+                this.routerLink = void 0;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     // ------ Lifecycle Hooks ---------------------------------------------------
     CardNavbarCardComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -44,24 +55,23 @@ var CardNavbarCardComponent = (function () {
             .distinctUntilChanged()
             .map(function (_a) {
             var selectedTab = _a.selectedTab, selectedCard = _a.selectedCard;
-            return !!((selectedTab === _this.forTab && selectedCard === _this.cid)
+            return !!((selectedTab === _this.forTab && selectedCard === _this.cardId)
                 || (selectedTab === _this.forTab && !selectedCard
-                    && _this.defaultCardForTab)
-                || (!selectedTab && !selectedCard && _this.defaultCardForAllTabs));
+                    && _this.defaultCardForTab));
         });
         // A stream derived from the service specific for notActive events
         var notActive$ = this.stateManagerService.getModel
             .filter(function (_a) {
             var selectedTab = _a.selectedTab, selectedCard = _a.selectedCard;
             return (selectedTab !== _this.forTab)
-                || (selectedTab === _this.forTab && selectedCard !== _this.cid);
+                || (selectedTab === _this.forTab && selectedCard !== _this.cardId);
         })
             .mapTo('notActive');
         // A stream derived from the service specific for selected events
         var selected$ = this.stateManagerService.getModel
             .filter(function (_a) {
             var selectedTab = _a.selectedTab, selectedCard = _a.selectedCard;
-            return selectedTab === _this.forTab && selectedCard === _this.cid;
+            return selectedTab === _this.forTab && selectedCard === _this.cardId;
         })
             .mapTo('selected');
         // The state stream to which template listens
@@ -81,13 +91,18 @@ var CardNavbarCardComponent = (function () {
         __metadata('design:type', String)
     ], CardNavbarCardComponent.prototype, "forTab", void 0);
     __decorate([
+        core_1.Input('supreCardId'), 
+        __metadata('design:type', String)
+    ], CardNavbarCardComponent.prototype, "cardId", void 0);
+    __decorate([
         core_1.Input('supreDefaultCardForTab'), 
         __metadata('design:type', Boolean)
     ], CardNavbarCardComponent.prototype, "defaultCardForTab", void 0);
     __decorate([
-        core_1.Input('supreDefaultCard'), 
-        __metadata('design:type', Boolean)
-    ], CardNavbarCardComponent.prototype, "defaultCardForAllTabs", void 0);
+        core_1.Input('supreRouterLink'), 
+        __metadata('design:type', Object), 
+        __metadata('design:paramtypes', [Object])
+    ], CardNavbarCardComponent.prototype, "supreRouterLink", null);
     CardNavbarCardComponent = __decorate([
         core_1.Component({
             selector: 'supre-card-navbar-card',

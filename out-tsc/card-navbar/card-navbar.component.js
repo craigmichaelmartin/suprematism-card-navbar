@@ -16,12 +16,19 @@ var CardNavbarComponent = (function () {
         this.stateManagerService = stateManagerService;
     }
     CardNavbarComponent.prototype.ngOnInit = function () {
-        this.stateManagerService.setModel = {};
+        this.stateManagerService.setModel = {
+            selectedTab: this.selectedTab,
+            selectedCard: this.selectedCard
+        };
     };
     __decorate([
-        core_1.Input('supreDefaultTab'), 
+        core_1.Input('supreSelectedTab'), 
         __metadata('design:type', String)
-    ], CardNavbarComponent.prototype, "defaultTab", void 0);
+    ], CardNavbarComponent.prototype, "selectedTab", void 0);
+    __decorate([
+        core_1.Input('supreSelectedCard'), 
+        __metadata('design:type', String)
+    ], CardNavbarComponent.prototype, "selectedCard", void 0);
     CardNavbarComponent = __decorate([
         core_1.Component({
             selector: 'supre-card-navbar',

@@ -11,7 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
+var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
+var router_1 = require('@angular/router');
 var state_manager_service_1 = require('./state-manager.service');
 var card_navbar_component_1 = require('./card-navbar/card-navbar.component');
 var menu_item_component_1 = require('./card-navbar/menu-item/menu-item.component');
@@ -19,7 +21,6 @@ var cards_component_1 = require('./card-navbar/cards/cards.component');
 var card_component_1 = require('./card-navbar/cards/card/card.component');
 var card_title_component_1 = require('./card-navbar/cards/card/card-title/card-title.component');
 var card_icon_component_1 = require('./card-navbar/cards/card/card-icon/card-icon.component');
-var core_1 = require('@angular/core');
 __export(require('./state-manager.service'));
 __export(require('./card-navbar/card-navbar.component'));
 __export(require('./card-navbar/menu-item/menu-item.component'));
@@ -34,6 +35,7 @@ var CardNavbarModule = (function () {
         core_1.NgModule({
             imports: [
                 common_1.CommonModule,
+                router_1.RouterModule
             ],
             providers: [
                 state_manager_service_1.StateManagerService

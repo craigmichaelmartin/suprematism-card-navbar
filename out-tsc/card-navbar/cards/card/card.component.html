@@ -1,10 +1,13 @@
-<div class="CardNavbar-card"
-     (mousedown)="style !== 'footer' && rawStateSource.next('preSelected')"
-     (mouseup)="style !== 'footer' && rawStateSource.next('selected')"
-     (mouseenter)="style !== 'footer' && rawStateSource.next('active')"
-     (mouseout)="style !== 'footer' && rawStateSource.next('notActive')"
-     [ngClass]="['is-' + (state$ | async), style === 'footer' ? 'CardNavbar-card--footer' : '']"
->
-  <div class="CardNavbar-cardTitle"><ng-content select="supre-card-navbar-card-title"></ng-content></div>
-  <div class="CardNavbar-cardIcon"><ng-content select="supre-card-navbar-card-icon"></ng-content></div>
-</div>
+<!-- Find a way to have a different template for footer, non-routerLink, and normal -->
+<a [routerLink]="routerLink">
+  <div class="CardNavbar-card"
+      (mousedown)="style !== 'footer' && rawStateSource.next('preSelected')"
+      (mouseup)="style !== 'footer' && rawStateSource.next('selected')"
+      (mouseenter)="style !== 'footer' && rawStateSource.next('active')"
+      (mouseout)="style !== 'footer' && rawStateSource.next('notActive')"
+      [ngClass]="['is-' + (state$ | async), style === 'footer' ? 'CardNavbar-card--footer' : '']"
+  >
+    <div class="CardNavbar-cardTitle"><ng-content select="supre-card-navbar-card-title"></ng-content></div>
+    <div class="CardNavbar-cardIcon"><ng-content select="supre-card-navbar-card-icon"></ng-content></div>
+  </div>
+</a>

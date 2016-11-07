@@ -24,8 +24,13 @@
 .icon-usericon:before {
   content: ""; }
 
+a {
+  color: inherit;
+  text-decoration: none; }
+
 :host {
-  height: 100%; }
+  height: 100%;
+  display: flex; }
 
 :host[supretabid="user"] {
   margin-left: auto; }
@@ -43,7 +48,6 @@
   font-weight: 600;
   font-size: 10px;
   font-family: Verdana;
-  display: inline-block;
   text-transform: uppercase;
   color: white;
   height: 100%;

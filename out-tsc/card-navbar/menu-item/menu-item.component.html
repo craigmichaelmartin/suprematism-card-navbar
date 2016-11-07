@@ -1,4 +1,4 @@
-<div class="CardNavbar-topMenuItemContainer">
+<a [routerLink]="routerLink" class="CardNavbar-topMenuItemContainer">
   <div
     (mousedown)="rawStateSource.next('preSelected')"
     (mouseup)="rawStateSource.next('selected')"
@@ -10,4 +10,4 @@
     <ng-content></ng-content>
     <span *ngIf="tabId === 'user'" class="icon-usericon CardNavbar-userMenuIcon"></span>
   </div>
-</div>
+</a>
