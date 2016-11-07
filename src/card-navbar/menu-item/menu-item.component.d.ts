@@ -11,11 +11,12 @@ export declare class CardNavbarMenuItemComponent implements OnInit {
     stateManagerProxy$: Observable<{
         selectedTab: string;
         selectedCard: any;
+        activeTab: any;
     } | {
         activeTab: string;
     }>;
     tabId: string;
-    defaultTab: boolean;
+    routerLink: string;
     constructor(stateManagerService: StateManagerService);
     ngOnInit(): void;
     isInCards($event: any): boolean;
