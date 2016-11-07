@@ -10,4 +10,5 @@ export declare class CardNavbarCardsComponent implements OnInit {
     forTab: string;
     constructor(stateManagerService: StateManagerService);
     ngOnInit(): void;
+    isInMenuItem($event: any): boolean;
 }
