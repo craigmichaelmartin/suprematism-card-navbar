@@ -13,11 +13,13 @@ var Observable_1 = require('rxjs/Observable');
 var Subject_1 = require('rxjs/Subject');
 var state_manager_service_1 = require('../../state-manager.service');
 var CardNavbarCardsComponent = (function () {
+    // ------ Constructor ------------------------------------------------------
     function CardNavbarCardsComponent(stateManagerService) {
         this.stateManagerService = stateManagerService;
         this.mouseInSource = new Subject_1.Subject();
         this.mouseIn$ = this.mouseInSource.startWith(false);
     }
+    // ------ Lifecycle Hooks ---------------------------------------------------
     CardNavbarCardsComponent.prototype.ngOnInit = function () {
         var _this = this;
         var isActiveTab$ = this.stateManagerService.getModel
@@ -28,7 +30,9 @@ var CardNavbarCardsComponent = (function () {
             .distinctUntilChanged()
             .switchMap(function (activeTab) {
             return _this.forTab === activeTab
-                ? Observable_1.Observable.interval(500).mapTo(true).take(1)
+                ? activeTab === 'user'
+                    ? Observable_1.Observable.interval(0).mapTo(true).take(1)
+                    : Observable_1.Observable.interval(500).mapTo(true).take(1)
                 : Observable_1.Observable.interval(100).mapTo(false).take(1);
         });
         this.show$ = Observable_1.Observable.merge(isActiveTab$, this.mouseIn$);
@@ -39,6 +43,12 @@ var CardNavbarCardsComponent = (function () {
                 return newState;
             });
         });
+    };
+    // ------ Public Methods ---------------------------------------------------
+    CardNavbarCardsComponent.prototype.isInMenuItem = function ($event) {
+        // Todo: using document.querySelector doesn't seem like the angular way
+        var el = $event.toElement || $event.relatedTarget;
+        return document.querySelector("supre-card-navbar-menu-item[supreTabId=\"" + this.forTab + "\"] a").contains(el);
     };
     __decorate([
         core_1.Input('supreForTab'), 

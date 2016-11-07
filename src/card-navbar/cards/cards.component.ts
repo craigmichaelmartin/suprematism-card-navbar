@@ -10,14 +10,25 @@ import { StateManagerService } from '../../state-manager.service';
 })
 export class CardNavbarCardsComponent implements OnInit {
 
+  // ------ Properties -------------------------------------------------------
+
   show$: Observable<boolean>;
   mouseInSource: Subject<boolean> = new Subject<boolean>();
   mouseIn$: Observable<boolean> = this.mouseInSource.startWith(false);
 
+
+  // ------ Inputs -----------------------------------------------------------
+
   @Input('supreForTab')
   forTab: string;
 
+
+  // ------ Constructor ------------------------------------------------------
+
   constructor(private stateManagerService: StateManagerService) {}
+
+
+  // ------ Lifecycle Hooks ---------------------------------------------------
 
   ngOnInit() {
     const isActiveTab$ = this.stateManagerService.getModel
@@ -40,4 +51,14 @@ export class CardNavbarCardsComponent implements OnInit {
       });
     });
   }
+
+
+  // ------ Public Methods ---------------------------------------------------
+
+  isInMenuItem($event) {
+    // Todo: using document.querySelector doesn't seem like the angular way
+    const el = $event.toElement || $event.relatedTarget;
+    return document.querySelector(`supre-card-navbar-menu-item[supreTabId="${this.forTab}"] a`).contains(el);
+  }
+
 }

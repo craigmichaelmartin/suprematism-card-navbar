@@ -1,7 +1,7 @@
 <div
     class="CardNavbar-cards"
     *ngIf="(show$ | async)"
-    (mouseleave)="this.mouseInSource.next(false);"
+    (mouseleave)="!isInMenuItem($event) && this.mouseInSource.next(false);"
   >
   <ng-content></ng-content>
 </div>
