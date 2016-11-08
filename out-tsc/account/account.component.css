@@ -45,12 +45,21 @@ a {
   font-size: 11px;
   padding-top: 2px; }
 
+.Account.is-single .Account-arrow {
+  display: none; }
+
 .Account.is-closed .Account-arrow {
   color: #0089d0; }
 
 .Account.is-open .Account-arrow {
   color: white;
   background-color: #0089d0; }
+
+.Account.is-open .Account-imageContainer {
+  display: none; }
+
+.Account.is-closed .Account-items {
+  display: none; }
 
 .Account-imageContainer {
   display: flex;

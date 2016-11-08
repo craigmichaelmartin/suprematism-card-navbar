@@ -3,14 +3,14 @@
     <div class="Account-title">
       {{ (selected$ | async).name }}
     </div>
-    <div class="Account-arrow" *ngIf="items.length > 1" (mouseup)="showItemsSource.next('toggle')">
+    <div class="Account-arrow" (mouseup)="showItemsSource.next('toggle')">
       <div class="icon ion-chevron-down"></div>
     </div>
   </div>
-  <div class="Account-imageContainer" *ngIf="!(showItems$ | async)">
+  <div class="Account-imageContainer">
     <img class="Account-image" src="{{ (selected$ | async).image }}">
   </div>
-  <div class="Account-items" *ngIf="showItems$ | async">
+  <div class="Account-items">
     <div class="Account-item" *ngFor="let item of items"
         [ngClass]="[(activeItem$ | async).name === item.name ? 'is-active' : '', ((selected$ | async).name === item.name) ? 'is-selected' : '']"
         (mouseenter)="activeItemSource.next(item)"

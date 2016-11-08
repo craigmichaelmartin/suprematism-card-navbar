@@ -9,27 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ReplaySubject_1 = require('rxjs/ReplaySubject');
+var Subject_1 = require('rxjs/Subject');
 require('rxjs/add/operator/takeUntil');
 var AccountComponent = (function () {
-    // ------ Constructor -------------------------------------------------------
     function AccountComponent() {
+        this.accountSelected = new core_1.EventEmitter();
         this.noItem = { name: '', image: '' };
     }
     // ------ Lifecycle Hooks ---------------------------------------------------
     AccountComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.selectedSource = new ReplaySubject_1.ReplaySubject();
-        this.showItemsSource = new ReplaySubject_1.ReplaySubject();
-        this.activeItemSource = new ReplaySubject_1.ReplaySubject();
+        this.selectedSource = new Subject_1.Subject();
+        this.showItemsSource = new Subject_1.Subject();
+        this.activeItemSource = new Subject_1.Subject();
         var defaultItem = this.defaultItemName
             ? this.items.find(function (item) { return item.name === _this.defaultItemName; })
             : this.items[0];
-        this.selected$ = this.selectedSource.startWith(defaultItem);
+        this.selected$ = this.selectedSource
+            .startWith(defaultItem);
         this.showItems$ = this.showItemsSource
             .scan(function (current_state) { return !current_state; }, false)
             .startWith(false);
         this.activeItem$ = this.activeItemSource.startWith(this.noItem);
+        this.selected$.distinctUntilChanged().subscribe(function (item) { return _this.accountSelected.emit(item.name); });
     };
     __decorate([
         core_1.Input('supreDefault'), 
@@ -39,6 +41,10 @@ var AccountComponent = (function () {
         core_1.Input('supreItems'), 
         __metadata('design:type', Array)
     ], AccountComponent.prototype, "items", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], AccountComponent.prototype, "accountSelected", void 0);
     AccountComponent = __decorate([
         core_1.Component({
             selector: 'supre-account',

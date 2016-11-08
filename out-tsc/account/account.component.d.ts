@@ -1,21 +1,21 @@
-import { OnInit } from '@angular/core';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { EventEmitter, OnInit } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/takeUntil';
 import { Item } from './item.interface';
 export declare class AccountComponent implements OnInit {
     defaultItemName: string;
     items: Array<Item>;
-    selectedSource: ReplaySubject<Item>;
+    accountSelected: EventEmitter<{}>;
+    selectedSource: Subject<Item>;
     selected$: Observable<Item>;
-    showItemsSource: ReplaySubject<'toggle'>;
+    showItemsSource: Subject<'toggle'>;
     showItems$: Observable<boolean>;
-    activeItemSource: ReplaySubject<Item>;
+    activeItemSource: Subject<Item>;
     activeItem$: Observable<Item>;
     noItem: {
         name: string;
         image: string;
     };
-    constructor();
     ngOnInit(): void;
 }
