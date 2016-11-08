@@ -6,4 +6,5 @@ export declare class MainComponent implements OnInit {
     selectedCard: string;
     constructor(_location: Location);
     ngOnInit(): void;
+    accountChanged(name: any): void;
 }
