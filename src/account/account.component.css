@@ -1,0 +1,104 @@
+a {
+  color: inherit;
+  text-decoration: none; }
+
+:host {
+  display: block; }
+
+.Account {
+  width: 100%;
+  cursor: default; }
+
+.Account-titleBar {
+  border-top: 1px dotted gray;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: block; }
+
+.Account.is-single {
+  text-align: center; }
+
+.Account.is-open .Account-titleBar {
+  background-color: rgba(0, 137, 208, 0.05); }
+
+.Account.is-closed .Account-titleBar {
+  border-bottom: 1px dotted gray; }
+
+.Account-title {
+  display: inline-block;
+  color: #999999;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: none;
+  text-align: center;
+  margin-left: 20px; }
+
+.Account-arrow {
+  display: inline-block;
+  float: right;
+  margin-right: 20px;
+  height: 14px;
+  width: 16px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #0089d0;
+  font-size: 11px;
+  padding-top: 2px; }
+
+.Account.is-closed .Account-arrow {
+  color: #0089d0; }
+
+.Account.is-open .Account-arrow {
+  color: white;
+  background-color: #0089d0; }
+
+.Account-imageContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80px; }
+
+.Account-image {
+  text-align: center;
+  max-height: 60px;
+  max-width: 260px;
+  padding: 10px;
+  margin: 0 auto; }
+
+.Account-item {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-top: 1px dotted #999999;
+  font-size: 11px;
+  padding-left: 10px;
+  cursor: pointer; }
+
+.Account-item.is-active {
+  background-color: rgba(0, 137, 208, 0.3); }
+
+.Account-item.is-active .Account-itemStatusIcon {
+  color: #0089d0; }
+
+.Account-item.is-active .Account-itemName {
+  color: #0089d0;
+  font-weight: 600; }
+
+.Account-item.is-selected {
+  background-color: #0089d0; }
+
+.Account-item.is-selected .Account-itemName {
+  color: white;
+  font-weight: 600; }
+
+.Account-item.is-selected .Account-itemStatusIcon {
+  color: white;
+  background-color: #0089d0; }
+
+.Account-itemName {
+  padding-left: 5px;
+  color: #999999; }
+
+.Account-itemStatusIcon {
+  color: #999999;
+  font-size: 18px;
+  vertical-align: sub; }

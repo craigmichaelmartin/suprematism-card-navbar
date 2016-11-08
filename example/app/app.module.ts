@@ -4,10 +4,12 @@ import { RouterModule }   from '@angular/router';
 
 import { PageComponent } from './page.component';
 import { MainComponent } from './main.component';
+import { AccountComponent } from '../../src/account/account.component';
 import { CardNavbarModule } from '../../src/index';
 
 @NgModule({
   declarations: [
+    AccountComponent,
     PageComponent,
     MainComponent
   ],
@@ -18,6 +20,9 @@ import { CardNavbarModule } from '../../src/index';
       { path: '', component: PageComponent },
       { path: ':selectedTab/:selectedCard', component: PageComponent }
     ])
+  ],
+  entryComponents: [
+    AccountComponent,
   ],
   providers: [],
   bootstrap: [MainComponent]

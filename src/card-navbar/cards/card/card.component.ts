@@ -13,9 +13,6 @@ export class CardNavbarCardComponent implements OnInit {
 
   // ------ Inputs -----------------------------------------------------------
 
-  @Input('supreStyle')
-  style: string;
-
   @Input('supreForTab')
   forTab: string;
 
