@@ -7,7 +7,7 @@ declare var require: any;
   selector: 'supre-root',
   template: require('./main.component.html')
 })
-export class MainComponent implements OnInit{
+export class MainComponent implements OnInit {
 
   selectedTab: string;
   selectedCard: string;
@@ -20,6 +20,10 @@ export class MainComponent implements OnInit{
     if (paths.length !== 3) {
       this._location.go(`${this.selectedTab}/${this.selectedCard}`);
     }
+  }
+
+  accountChanged(name) {
+    console.log(name);
   }
 
 }

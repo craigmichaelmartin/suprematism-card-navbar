@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/takeUntil';
 import { Item } from './item.interface';
@@ -19,37 +19,38 @@ export class AccountComponent implements OnInit {
   @Input('supreItems')
   items: Array<Item>;
 
+  @Output()
+  accountSelected = new EventEmitter();
+
 
   // ------ Properties -------------------------------------------------------
 
-  selectedSource: ReplaySubject<Item>;
+  selectedSource: Subject<Item>;
   selected$: Observable<Item>;
-  showItemsSource: ReplaySubject<'toggle'>;
+  showItemsSource: Subject<'toggle'>;
   showItems$: Observable<boolean>;
-  activeItemSource: ReplaySubject<Item>;
+  activeItemSource: Subject<Item>;
   activeItem$: Observable<Item>;
   noItem = {name: '', image: ''};
-
-
-  // ------ Constructor -------------------------------------------------------
-
-  constructor() {}
 
 
   // ------ Lifecycle Hooks ---------------------------------------------------
 
   ngOnInit() {
-    this.selectedSource = new ReplaySubject<Item>();
-    this.showItemsSource = new ReplaySubject<'toggle'>();
-    this.activeItemSource = new ReplaySubject<Item>();
+    this.selectedSource = new Subject<Item>();
+    this.showItemsSource = new Subject<'toggle'>();
+    this.activeItemSource = new Subject<Item>();
     const defaultItem = this.defaultItemName
       ? this.items.find((item) => item.name === this.defaultItemName)
       : this.items[0];
-    this.selected$ = this.selectedSource.startWith(defaultItem);
+    this.selected$ = this.selectedSource
+      .startWith(defaultItem);
     this.showItems$ = this.showItemsSource
       .scan((current_state) => !current_state, false)
       .startWith(false);
     this.activeItem$ = this.activeItemSource.startWith(this.noItem);
+    this.selected$.distinctUntilChanged().subscribe(
+      (item: Item) => this.accountSelected.emit(item.name));
   }
 
 }
