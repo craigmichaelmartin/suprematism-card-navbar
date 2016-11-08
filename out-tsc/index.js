@@ -21,6 +21,7 @@ var cards_component_1 = require('./card-navbar/cards/cards.component');
 var card_component_1 = require('./card-navbar/cards/card/card.component');
 var card_title_component_1 = require('./card-navbar/cards/card/card-title/card-title.component');
 var card_icon_component_1 = require('./card-navbar/cards/card/card-icon/card-icon.component');
+var custom_card_component_1 = require('./card-navbar/cards/custom-card/custom-card.component');
 __export(require('./state-manager.service'));
 __export(require('./card-navbar/card-navbar.component'));
 __export(require('./card-navbar/menu-item/menu-item.component'));
@@ -28,6 +29,7 @@ __export(require('./card-navbar/cards/cards.component'));
 __export(require('./card-navbar/cards/card/card.component'));
 __export(require('./card-navbar/cards/card/card-title/card-title.component'));
 __export(require('./card-navbar/cards/card/card-icon/card-icon.component'));
+__export(require('./card-navbar/cards/custom-card/custom-card.component'));
 var CardNavbarModule = (function () {
     function CardNavbarModule() {
     }
@@ -47,6 +49,7 @@ var CardNavbarModule = (function () {
                 card_component_1.CardNavbarCardComponent,
                 card_title_component_1.CardNavbarCardTitleComponent,
                 card_icon_component_1.CardNavbarCardIconComponent,
+                custom_card_component_1.CardNavbarCustomCardComponent,
             ],
             exports: [
                 card_navbar_component_1.CardNavbarComponent,
@@ -55,6 +58,7 @@ var CardNavbarModule = (function () {
                 card_component_1.CardNavbarCardComponent,
                 card_title_component_1.CardNavbarCardTitleComponent,
                 card_icon_component_1.CardNavbarCardIconComponent,
+                custom_card_component_1.CardNavbarCustomCardComponent,
             ],
             entryComponents: [
                 card_navbar_component_1.CardNavbarComponent,
@@ -63,6 +67,7 @@ var CardNavbarModule = (function () {
                 card_component_1.CardNavbarCardComponent,
                 card_title_component_1.CardNavbarCardTitleComponent,
                 card_icon_component_1.CardNavbarCardIconComponent,
+                custom_card_component_1.CardNavbarCustomCardComponent,
             ]
         }), 
         __metadata('design:paramtypes', [])

@@ -1,0 +1,28 @@
+<div class="Account" [ngClass]="[(showItems$ | async) ? 'is-open' : 'is-closed', items.length > 1 ? 'is-multi' : 'is-single']">
+  <div class="Account-titleBar">
+    <div class="Account-title">
+      {{ (selected$ | async).name }}
+    </div>
+    <div class="Account-arrow" *ngIf="items.length > 1" (mouseup)="showItemsSource.next('toggle')">
+      <div class="icon ion-chevron-down"></div>
+    </div>
+  </div>
+  <div class="Account-imageContainer" *ngIf="!(showItems$ | async)">
+    <img class="Account-image" src="{{ (selected$ | async).image }}">
+  </div>
+  <div class="Account-items" *ngIf="showItems$ | async">
+    <div class="Account-item" *ngFor="let item of items"
+        [ngClass]="[(activeItem$ | async).name === item.name ? 'is-active' : '', ((selected$ | async).name === item.name) ? 'is-selected' : '']"
+        (mouseenter)="activeItemSource.next(item)"
+        (mouseleave)="activeItemSource.next(noItem)"
+        (mouseup)="selectedSource.next(item); showItemsSource.next('toggle')"
+    >
+      <div class="Account-itemStatus">
+        <span class="Account-itemStatusIcon icon ion-ios-checkmark-outline"></span>
+        <span class="Account-itemName">
+          {{ item.name }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

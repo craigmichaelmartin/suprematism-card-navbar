@@ -5,7 +5,6 @@ import 'rxjs/add/operator/takeUntil';
 import { StateManagerService } from '../../../state-manager.service';
 export declare class CardNavbarCardComponent implements OnInit {
     private stateManagerService;
-    style: string;
     forTab: string;
     cardId: string;
     defaultCardForTab: boolean;

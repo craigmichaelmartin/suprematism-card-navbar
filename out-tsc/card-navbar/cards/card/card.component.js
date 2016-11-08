@@ -83,10 +83,6 @@ var CardNavbarCardComponent = (function () {
         });
     };
     __decorate([
-        core_1.Input('supreStyle'), 
-        __metadata('design:type', String)
-    ], CardNavbarCardComponent.prototype, "style", void 0);
-    __decorate([
         core_1.Input('supreForTab'), 
         __metadata('design:type', String)
     ], CardNavbarCardComponent.prototype, "forTab", void 0);
