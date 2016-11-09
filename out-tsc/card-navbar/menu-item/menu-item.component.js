@@ -27,10 +27,10 @@ var CardNavbarMenuItemComponent = (function () {
             .filter(function (state) { return ['selected', 'active', 'notActive'].indexOf(state) > -1; })
             .map(function (state) {
             if (state === 'selected') {
-                return { selectedTab: _this.tabId, selectedCard: void 0, activeTab: void 0 };
+                return { selectedTab: _this.supreTabId, selectedCard: void 0, activeTab: void 0 };
             }
             else if (state === 'active') {
-                return { activeTab: _this.tabId };
+                return { activeTab: _this.supreTabId };
             }
             else if (state === 'notActive') {
                 return { activeTab: void 0 };
@@ -46,22 +46,22 @@ var CardNavbarMenuItemComponent = (function () {
         var isSelectedTab$ = this.stateManagerService.getModel
             .map(function (_a) {
             var selectedTab = _a.selectedTab;
-            return !!(selectedTab === _this.tabId);
+            return !!(selectedTab === _this.supreTabId);
         });
         // A stream derived from the service specific for notActive events
         var notActive$ = this.stateManagerService.getModel
             .filter(function (_a) {
             var selectedTab = _a.selectedTab;
-            return selectedTab !== _this.tabId;
+            return selectedTab !== _this.supreTabId;
         })
             .mapTo('notActive');
         // A stream derived from the service specific for selected events
         var selected$ = this.stateManagerService.getModel
-            .filter(function (currentState) { return currentState.selectedTab === _this.tabId; })
+            .filter(function (currentState) { return currentState.selectedTab === _this.supreTabId; })
             .mapTo('selected');
         // A stream derived from the service specific for active events
         var active$ = this.stateManagerService.getModel
-            .filter(function (currentState) { return currentState.activeTab === _this.tabId; })
+            .filter(function (currentState) { return currentState.activeTab === _this.supreTabId; })
             .mapTo('active');
         // The state stream to which template listens
         this.state$ = this.localState$.merge(notActive$, active$, selected$)
@@ -78,13 +78,13 @@ var CardNavbarMenuItemComponent = (function () {
         return document.querySelector('.js-cards').contains(el);
     };
     __decorate([
-        core_1.Input('supreTabId'), 
+        core_1.Input(), 
         __metadata('design:type', String)
-    ], CardNavbarMenuItemComponent.prototype, "tabId", void 0);
+    ], CardNavbarMenuItemComponent.prototype, "supreTabId", void 0);
     __decorate([
-        core_1.Input('supreRouterLink'), 
+        core_1.Input(), 
         __metadata('design:type', String)
-    ], CardNavbarMenuItemComponent.prototype, "routerLink", void 0);
+    ], CardNavbarMenuItemComponent.prototype, "supreRouterLink", void 0);
     CardNavbarMenuItemComponent = __decorate([
         core_1.Component({
             selector: 'supre-card-navbar-menu-item',

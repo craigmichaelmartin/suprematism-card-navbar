@@ -22,9 +22,9 @@ var AccountComponent = (function () {
         this.selectedSource = new Subject_1.Subject();
         this.showItemsSource = new Subject_1.Subject();
         this.activeItemSource = new Subject_1.Subject();
-        var defaultItem = this.defaultItemName
-            ? this.items.find(function (item) { return item.name === _this.defaultItemName; })
-            : this.items[0];
+        var defaultItem = this.supreDefault
+            ? this.supreItems.find(function (item) { return item.name === _this.supreDefault; })
+            : this.supreItems[0];
         this.selected$ = this.selectedSource
             .startWith(defaultItem);
         this.showItems$ = this.showItemsSource
@@ -34,13 +34,13 @@ var AccountComponent = (function () {
         this.selected$.distinctUntilChanged().subscribe(function (item) { return _this.accountSelected.emit(item.name); });
     };
     __decorate([
-        core_1.Input('supreDefault'), 
+        core_1.Input(), 
         __metadata('design:type', String)
-    ], AccountComponent.prototype, "defaultItemName", void 0);
+    ], AccountComponent.prototype, "supreDefault", void 0);
     __decorate([
-        core_1.Input('supreItems'), 
+        core_1.Input(), 
         __metadata('design:type', Array)
-    ], AccountComponent.prototype, "items", void 0);
+    ], AccountComponent.prototype, "supreItems", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)

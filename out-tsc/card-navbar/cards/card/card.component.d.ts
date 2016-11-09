@@ -3,16 +3,17 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/takeUntil';
 import { StateManagerService } from '../../../state-manager.service';
+import { CardStateType } from './card-state.type';
 export declare class CardNavbarCardComponent implements OnInit {
     private stateManagerService;
-    forTab: string;
-    cardId: string;
-    defaultCardForTab: boolean;
+    supreForTab: string;
+    supreCardId: string;
+    supreDefaultCardForTab: boolean;
     routerLink: string;
     supreRouterLink: any;
-    state$: Observable<string>;
-    rawStateSource: Subject<string>;
-    localState$: Observable<string>;
+    state$: Observable<CardStateType>;
+    rawStateSource: Subject<CardStateType>;
+    localState$: Observable<CardStateType>;
     stateManagerProxy$: Observable<{
         selectedTab: string;
         selectedCard: string;

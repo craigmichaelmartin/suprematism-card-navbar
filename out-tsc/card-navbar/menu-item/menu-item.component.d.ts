@@ -3,11 +3,12 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { StateManagerService } from '../../state-manager.service';
+import { MenuItemStateType } from './menu-item-state.type';
 export declare class CardNavbarMenuItemComponent implements OnInit {
     private stateManagerService;
-    state$: Observable<string>;
-    rawStateSource: Subject<any>;
-    localState$: Observable<any>;
+    state$: Observable<MenuItemStateType>;
+    rawStateSource: Subject<MenuItemStateType>;
+    localState$: Observable<MenuItemStateType>;
     stateManagerProxy$: Observable<{
         selectedTab: string;
         selectedCard: any;
@@ -15,8 +16,8 @@ export declare class CardNavbarMenuItemComponent implements OnInit {
     } | {
         activeTab: string;
     }>;
-    tabId: string;
-    routerLink: string;
+    supreTabId: string;
+    supreRouterLink: string;
     constructor(stateManagerService: StateManagerService);
     ngOnInit(): void;
     isInCards($event: any): boolean;
