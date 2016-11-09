@@ -39,7 +39,7 @@ export class CardNavbarCardsComponent implements OnInit {
           ? activeTab === 'user'
             ? Observable.interval(0).mapTo(true).take(1)
             : Observable.interval(500).mapTo(true).take(1)
-          : Observable.interval(100).mapTo(false).take(1));
+          : Observable.interval(0).mapTo(false).take(1));
 
     this.show$ = Observable.merge(isActiveTab$, this.mouseIn$);
 
