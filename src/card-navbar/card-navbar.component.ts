@@ -9,18 +9,16 @@ import { StateManagerService } from '../state-manager.service';
 })
 export class CardNavbarComponent implements OnInit {
 
-  @Input('supreSelectedTab')
-  selectedTab: string;
+  @Input() supreSelectedTab: string;
 
-  @Input('supreSelectedCard')
-  selectedCard: string;
+  @Input() supreSelectedCard: string;
 
   constructor(private stateManagerService: StateManagerService) {}
 
   ngOnInit() {
     this.stateManagerService.setModel = {
-      selectedTab: this.selectedTab,
-      selectedCard: this.selectedCard
+      selectedTab: this.supreSelectedTab,
+      selectedCard: this.supreSelectedCard
     };
   }
 }

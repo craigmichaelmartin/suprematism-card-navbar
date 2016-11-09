@@ -13,14 +13,11 @@ export class AccountComponent implements OnInit {
 
   // ------ Inputs -----------------------------------------------------------
 
-  @Input('supreDefault')
-  defaultItemName: string;
+  @Input() supreDefault: string;
 
-  @Input('supreItems')
-  items: Array<Item>;
+  @Input() supreItems: Array<Item>;
 
-  @Output()
-  accountSelected = new EventEmitter();
+  @Output() accountSelected = new EventEmitter();
 
 
   // ------ Properties -------------------------------------------------------
@@ -40,9 +37,9 @@ export class AccountComponent implements OnInit {
     this.selectedSource = new Subject<Item>();
     this.showItemsSource = new Subject<'toggle'>();
     this.activeItemSource = new Subject<Item>();
-    const defaultItem = this.defaultItemName
-      ? this.items.find((item) => item.name === this.defaultItemName)
-      : this.items[0];
+    const defaultItem = this.supreDefault
+      ? this.supreItems.find((item) => item.name === this.supreDefault)
+      : this.supreItems[0];
     this.selected$ = this.selectedSource
       .startWith(defaultItem);
     this.showItems$ = this.showItemsSource

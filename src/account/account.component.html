@@ -1,4 +1,4 @@
-<div class="Account" [ngClass]="[(showItems$ | async) ? 'is-open' : 'is-closed', items.length > 1 ? 'is-multi' : 'is-single']">
+<div class="Account" [ngClass]="[(showItems$ | async) ? 'is-open' : 'is-closed', supreItems.length > 1 ? 'is-multi' : 'is-single']">
   <div class="Account-titleBar">
     <div class="Account-title">
       {{ (selected$ | async).name }}
@@ -11,7 +11,7 @@
     <img class="Account-image" src="{{ (selected$ | async).image }}">
   </div>
   <div class="Account-items">
-    <div class="Account-item" *ngFor="let item of items"
+    <div class="Account-item" *ngFor="let item of supreItems"
         [ngClass]="[(activeItem$ | async).name === item.name ? 'is-active' : '', ((selected$ | async).name === item.name) ? 'is-selected' : '']"
         (mouseenter)="activeItemSource.next(item)"
         (mouseleave)="activeItemSource.next(noItem)"

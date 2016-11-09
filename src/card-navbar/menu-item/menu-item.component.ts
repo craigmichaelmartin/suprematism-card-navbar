@@ -28,9 +28,9 @@ export class CardNavbarMenuItemComponent implements OnInit {
     .filter((state) => ['selected', 'active', 'notActive'].indexOf(state) > -1)
     .map((state) => {
       if (state === 'selected') {
-        return { selectedTab: this.tabId, selectedCard: void 0, activeTab: void 0 };
+        return { selectedTab: this.supreTabId, selectedCard: void 0, activeTab: void 0 };
       } else if (state === 'active') {
-        return { activeTab: this.tabId };
+        return { activeTab: this.supreTabId };
       } else if (state === 'notActive') {
         return { activeTab: void 0 };
       }
@@ -39,11 +39,9 @@ export class CardNavbarMenuItemComponent implements OnInit {
 
   // ------ Inputs -----------------------------------------------------------
 
-  @Input('supreTabId')
-  tabId: string;
+  @Input() supreTabId: string;
 
-  @Input('supreRouterLink')
-  routerLink: string;
+  @Input() supreRouterLink: string;
 
 
   // ------ Constructor ------------------------------------------------------
@@ -60,21 +58,21 @@ export class CardNavbarMenuItemComponent implements OnInit {
 
     // A stream with the latest value of whether the tab is selected
     const isSelectedTab$ = this.stateManagerService.getModel
-      .map(({selectedTab}) => !!(selectedTab === this.tabId));
+      .map(({selectedTab}) => !!(selectedTab === this.supreTabId));
 
     // A stream derived from the service specific for notActive events
     const notActive$ = this.stateManagerService.getModel
-      .filter(({selectedTab}) => selectedTab !== this.tabId)
+      .filter(({selectedTab}) => selectedTab !== this.supreTabId)
       .mapTo('notActive');
 
     // A stream derived from the service specific for selected events
     const selected$ = this.stateManagerService.getModel
-      .filter((currentState) => currentState.selectedTab === this.tabId)
+      .filter((currentState) => currentState.selectedTab === this.supreTabId)
       .mapTo('selected');
 
     // A stream derived from the service specific for active events
     const active$ = this.stateManagerService.getModel
-      .filter((currentState) => currentState.activeTab === this.tabId)
+      .filter((currentState) => currentState.activeTab === this.supreTabId)
       .mapTo('active');
 
     // The state stream to which template listens

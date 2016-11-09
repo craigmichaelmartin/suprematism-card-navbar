@@ -13,20 +13,17 @@ export class CardNavbarCardComponent implements OnInit {
 
   // ------ Inputs -----------------------------------------------------------
 
-  @Input('supreForTab')
-  forTab: string;
+  @Input() supreForTab: string;
 
-  @Input('supreCardId')
-  cardId: string;
+  @Input() supreCardId: string;
 
-  @Input('supreDefaultCardForTab')
-  defaultCardForTab: boolean = false;
+  @Input() supreDefaultCardForTab: boolean = false;
 
   routerLink: string;
-  @Input('supreRouterLink')
+  @Input()
   set supreRouterLink(routerLink) {
     if (routerLink === '') {
-      this.routerLink = `${this.forTab}/${this.cardId}`;
+      this.routerLink = `${this.supreForTab}/${this.supreCardId}`;
     } else if (routerLink) {
       this.routerLink = routerLink;
     } else {
@@ -50,7 +47,7 @@ export class CardNavbarCardComponent implements OnInit {
   // The stream of state kept in a service
   stateManagerProxy$ = this.rawStateSource
     .filter((state) => ['selected'].indexOf(state) > -1)
-    .map((state) => ({selectedTab: this.forTab, selectedCard: this.cardId, activeTab: void 0}));
+    .map((state) => ({selectedTab: this.supreForTab, selectedCard: this.supreCardId, activeTab: void 0}));
 
 
   // ------ Constructor -------------------------------------------------------
@@ -70,22 +67,22 @@ export class CardNavbarCardComponent implements OnInit {
     const isSelectedCard$ = this.stateManagerService.getModel
       .distinctUntilChanged()
       .map(({selectedTab, selectedCard}) => !!(
-        (selectedTab === this.forTab && selectedCard === this.cardId)
-        || (selectedTab === this.forTab && !selectedCard
-            && this.defaultCardForTab))
+        (selectedTab === this.supreForTab && selectedCard === this.supreCardId)
+        || (selectedTab === this.supreForTab && !selectedCard
+            && this.supreDefaultCardForTab))
       );
 
     // A stream derived from the service specific for notActive events
     const notActive$ = this.stateManagerService.getModel
       .filter (({selectedTab, selectedCard}) =>
-        (selectedTab !== this.forTab)
-        || (selectedTab === this.forTab && selectedCard !== this.cardId))
+        (selectedTab !== this.supreForTab)
+        || (selectedTab === this.supreForTab && selectedCard !== this.supreCardId))
       .mapTo('notActive');
 
     // A stream derived from the service specific for selected events
     const selected$ = this.stateManagerService.getModel
       .filter(({selectedTab, selectedCard}) =>
-        selectedTab === this.forTab && selectedCard === this.cardId)
+        selectedTab === this.supreForTab && selectedCard === this.supreCardId)
       .mapTo('selected');
 
     // The state stream to which template listens

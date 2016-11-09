@@ -19,8 +19,7 @@ export class CardNavbarCardsComponent implements OnInit {
 
   // ------ Inputs -----------------------------------------------------------
 
-  @Input('supreForTab')
-  forTab: string;
+  @Input() supreForTab: string;
 
 
   // ------ Constructor ------------------------------------------------------
@@ -35,7 +34,7 @@ export class CardNavbarCardsComponent implements OnInit {
       .map(({activeTab}) => activeTab)
       .distinctUntilChanged()
       .switchMap((activeTab) =>
-        this.forTab === activeTab
+        this.supreForTab === activeTab
           ? activeTab === 'user'
             ? Observable.interval(0).mapTo(true).take(1)
             : Observable.interval(500).mapTo(true).take(1)
@@ -58,7 +57,7 @@ export class CardNavbarCardsComponent implements OnInit {
   isInMenuItem($event) {
     // Todo: using document.querySelector doesn't seem like the angular way
     const el = $event.toElement || $event.relatedTarget;
-    return document.querySelector(`supre-card-navbar-menu-item[supreTabId="${this.forTab}"] a`).contains(el);
+    return document.querySelector(`supre-card-navbar-menu-item[supreTabId="${this.supreForTab}"] a`).contains(el);
   }
 
 }
