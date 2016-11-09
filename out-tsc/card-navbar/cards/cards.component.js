@@ -46,17 +46,8 @@ var CardNavbarCardsComponent = (function () {
                     : Observable_1.Observable.interval(500).mapTo('active').take(1)
                 : Observable_1.Observable.interval(0).mapTo('notActive').take(1);
         });
-        // A stream derived from the service specific for notActive events
-        var notActive$ = this.stateManagerService.getModel
-            .map(function (_a) {
-            var activeTab = _a.activeTab;
-            return activeTab;
-        })
-            .distinctUntilChanged()
-            .filter(function (activeTab) { return !activeTab; })
-            .mapTo('notActive');
         // The state stream to which template listens
-        this.state$ = Observable_1.Observable.merge(active$, notActive$);
+        this.state$ = Observable_1.Observable.merge(active$);
     };
     // ------ Public Methods ---------------------------------------------------
     CardNavbarCardsComponent.prototype.isInMenuItem = function ($event) {

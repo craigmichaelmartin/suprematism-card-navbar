@@ -58,15 +58,8 @@ export class CardNavbarCardsComponent implements OnInit {
             : Observable.interval(500).mapTo('active').take(1)
           : Observable.interval(0).mapTo('notActive').take(1));
 
-    // A stream derived from the service specific for notActive events
-    const notActive$ = this.stateManagerService.getModel
-      .map(({activeTab}) => activeTab)
-      .distinctUntilChanged()
-      .filter((activeTab) => !activeTab)
-      .mapTo('notActive');
-
     // The state stream to which template listens
-    this.state$ = Observable.merge(active$, notActive$);
+    this.state$ = Observable.merge(active$);
   }
 
 
