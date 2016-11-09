@@ -1,0 +1,7 @@
+<div
+    class="CardNavbar-cards"
+    *ngIf="(state$ | async) !== 'notActive'"
+    (mouseleave)="!isInMenuItem($event) && this.rawStateSource.next('notActive');"
+  >
+  <ng-content></ng-content>
+</div>

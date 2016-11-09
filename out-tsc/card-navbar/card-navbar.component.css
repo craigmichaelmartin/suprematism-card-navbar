@@ -1,0 +1,50 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.ttf?n4kk4c") format("truetype"), url("../fonts/icomoon.woff?n4kk4c") format("woff"), url("../fonts/icomoon.svg?n4kk4c#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-g-raph-type:before {
+  content: ""; }
+
+.icon-usericon:before {
+  content: ""; }
+
+.CardNavbar {
+  display: block;
+  font-family: Verdana;
+  width: 100%; }
+
+.CardNavbar-navbar {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  background-color: #0089d0; }
+
+.CardNavbar-title {
+  margin-left: 85px;
+  width: 155px;
+  font-size: 14px;
+  color: white; }
+
+.GiraffeLogo {
+  position: absolute;
+  top: 1px;
+  left: 0px;
+  width: 75px;
+  height: 60px;
+  z-index: 999; }

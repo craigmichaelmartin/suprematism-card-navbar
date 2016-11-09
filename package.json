@@ -7,7 +7,10 @@
   "typings": "out-tsc/index.d.ts",
   "scripts": {
     "build": "npm run build:tsc && npm run build:css && npm run build:copyAssets",
-    "build:copyAssets": "cp -R src/*.css ./out-tsc && cp -R src/*html ./out-tsc",
+    "build:copyAssets": "npm run build:copyAssets:css && npm run build:copyAssets:html && npm run build:copyAssets:fonts",
+    "build:copyAssets:css": "rsync -avm --include='*.css' -f 'hide,! */' src/ out-tsc/",
+    "build:copyAssets:html": "rsync -avm --include='*.html' -f 'hide,! */' src/ out-tsc/",
+    "build:copyAssets:fonts": "cp -R src/fonts out-tsc/",
     "build:tsc": "tsc -p src",
     "build:css": "node-sass src -o src",
     "deploy": "npm run build && ng github-pages:deploy",

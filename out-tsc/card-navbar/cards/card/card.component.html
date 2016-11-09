@@ -1,0 +1,12 @@
+<a [routerLink]="routerLink">
+  <div class="CardNavbar-card"
+      (mousedown)="rawStateSource.next('preSelected')"
+      (mouseup)="rawStateSource.next('selected')"
+      (mouseenter)="rawStateSource.next('active')"
+      (mouseout)="rawStateSource.next('notActive')"
+      [ngClass]="['is-' + (state$ | async)]"
+  >
+    <div class="CardNavbar-cardTitle"><ng-content select="supre-card-navbar-card-title"></ng-content></div>
+    <div class="CardNavbar-cardIcon"><ng-content select="supre-card-navbar-card-icon"></ng-content></div>
+  </div>
+</a>

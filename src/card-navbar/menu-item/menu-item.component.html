@@ -1,0 +1,13 @@
+<a [routerLink]="supreRouterLink" class="CardNavbar-topMenuItemContainer">
+  <div
+    (mousedown)="rawStateSource.next('preSelected')"
+    (mouseup)="rawStateSource.next('selected')"
+    (mouseenter)="rawStateSource.next('active')"
+    (mouseleave)="!isInCards($event) && rawStateSource.next('notActive')"
+    class="CardNavbar-topMenuItem"
+    [ngClass] = "['is-' + (state$ | async), supreTabId === 'user' ? 'CardNavbar-userMenuItem' : '']"
+  >
+    <ng-content></ng-content>
+    <span *ngIf="supreTabId === 'user'" class="icon-usericon CardNavbar-userMenuIcon"></span>
+  </div>
+</a>

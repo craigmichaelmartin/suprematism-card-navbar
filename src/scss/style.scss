@@ -1,0 +1,37 @@
+@import "variables.scss";
+
+@font-face {
+  font-family: 'icomoon';
+  src:
+    url('#{$icomoon-font-path}/icomoon.ttf?n4kk4c') format('truetype'),
+    url('#{$icomoon-font-path}/icomoon.woff?n4kk4c') format('woff'),
+    url('#{$icomoon-font-path}/icomoon.svg?n4kk4c#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-g-raph-type {
+  &:before {
+    content: $icon-g-raph-type;
+  }
+}
+.icon-usericon {
+  &:before {
+    content: $icon-usericon;
+  }
+}

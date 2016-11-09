@@ -1,18 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule }   from '@angular/router';
 
-import { AppComponent } from './app.component';
+import { PageComponent } from './page.component';
+import { MainComponent } from './main.component';
+import { AccountComponent } from '../../src/account/account.component';
 import { CardNavbarModule } from '../../src/index';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AccountComponent,
+    PageComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
-    CardNavbarModule
+    CardNavbarModule,
+    RouterModule.forRoot([
+      { path: '', component: PageComponent },
+      { path: ':selectedTab/:selectedCard', component: PageComponent }
+    ])
+  ],
+  entryComponents: [
+    AccountComponent,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [MainComponent]
 })
 export class AppModule { }
