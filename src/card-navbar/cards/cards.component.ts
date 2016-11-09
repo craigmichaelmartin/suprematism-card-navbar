@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { StateManagerService } from '../../state-manager.service';
+import { StateType } from './state.type';
 
 @Component({
   selector: 'supre-card-navbar-cards',
@@ -12,9 +13,20 @@ export class CardNavbarCardsComponent implements OnInit {
 
   // ------ Properties -------------------------------------------------------
 
-  show$: Observable<boolean>;
-  mouseInSource: Subject<boolean> = new Subject<boolean>();
-  mouseIn$: Observable<boolean> = this.mouseInSource.startWith(false);
+  // The stream the template reads from for its state values
+  state$: Observable<StateType>;
+
+  // Emits events of raw data from the template
+  rawStateSource: Subject<StateType> = new Subject<StateType>();
+
+  // The stream of state kept in a service
+  stateManagerProxy$ = this.rawStateSource
+    .filter((state) => ['notActive'].indexOf(state) > -1)
+    .map((state) => {
+      if (state === 'notActive') {
+        return { activeTab: void 0 };
+      }
+    });
 
 
   // ------ Inputs -----------------------------------------------------------
@@ -30,25 +42,31 @@ export class CardNavbarCardsComponent implements OnInit {
   // ------ Lifecycle Hooks ---------------------------------------------------
 
   ngOnInit() {
-    const isActiveTab$ = this.stateManagerService.getModel
+
+    // Update the service with the events from the local proxy stream
+    this.stateManagerService.updateModelFromObservable(
+      this.stateManagerProxy$);
+
+    // A stream derived from the service specific for active / notActive events
+    const active$ = this.stateManagerService.getModel
       .map(({activeTab}) => activeTab)
       .distinctUntilChanged()
       .switchMap((activeTab) =>
         this.supreForTab === activeTab
           ? activeTab === 'user'
-            ? Observable.interval(0).mapTo(true).take(1)
-            : Observable.interval(500).mapTo(true).take(1)
-          : Observable.interval(0).mapTo(false).take(1));
+            ? Observable.interval(0).mapTo('active').take(1)
+            : Observable.interval(500).mapTo('active').take(1)
+          : Observable.interval(0).mapTo('notActive').take(1));
 
-    this.show$ = Observable.merge(isActiveTab$, this.mouseIn$);
+    // A stream derived from the service specific for notActive events
+    const notActive$ = this.stateManagerService.getModel
+      .map(({activeTab}) => activeTab)
+      .distinctUntilChanged()
+      .filter((activeTab) => !activeTab)
+      .mapTo('notActive');
 
-    this.mouseIn$.subscribe((mouseIn) => {
-      this.stateManagerService.updateModel((currentState) => {
-        const newState = Object.assign({}, currentState);
-        newState.activeTab = void 0;
-        return newState;
-      });
-    });
+    // The state stream to which template listens
+    this.state$ = Observable.merge(active$, notActive$);
   }
 
 
