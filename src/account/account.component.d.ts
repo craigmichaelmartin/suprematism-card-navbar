@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/takeUntil';
 import { Item } from './item.interface';
 export declare class AccountComponent implements OnInit {
-    defaultItemName: string;
-    items: Array<Item>;
+    supreDefault: string;
+    supreItems: Array<Item>;
     accountSelected: EventEmitter<{}>;
     selectedSource: Subject<Item>;
     selected$: Observable<Item>;

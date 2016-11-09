@@ -3,8 +3,8 @@ import 'rxjs/add/operator/map';
 import { StateManagerService } from '../state-manager.service';
 export declare class CardNavbarComponent implements OnInit {
     private stateManagerService;
-    selectedTab: string;
-    selectedCard: string;
+    supreSelectedTab: string;
+    supreSelectedCard: string;
     constructor(stateManagerService: StateManagerService);
     ngOnInit(): void;
 }
