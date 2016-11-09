@@ -3,6 +3,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { StateManagerService } from '../../state-manager.service';
+import { MenuItemStateType } from './menu-item-state.type';
 
 @Component({
   selector: 'supre-card-navbar-menu-item',
@@ -14,13 +15,13 @@ export class CardNavbarMenuItemComponent implements OnInit {
   // ------ Properties -------------------------------------------------------
 
   // The stream the template reads from for its state values
-  state$: Observable<string>;
+  state$: Observable<MenuItemStateType>;
 
   // Emits events of raw data from the template
-  rawStateSource: Subject<any> = new Subject();
+  rawStateSource: Subject<MenuItemStateType> = new Subject<MenuItemStateType>();
 
   // The stream of state kept locally
-  localState$ = this.rawStateSource
+  localState$: Observable<MenuItemStateType> = this.rawStateSource
     .filter((state) => ['preSelected'].indexOf(state) > -1);
 
   // The stream of state kept in a service
@@ -84,7 +85,7 @@ export class CardNavbarMenuItemComponent implements OnInit {
 
   // ------ Public Methods ---------------------------------------------------
 
-  isInCards($event) {
+  isInCards($event): boolean {
     // Todo: using document.querySelector doesn't seem like the angular way
     const el = $event.toElement || $event.relatedTarget;
     return document.querySelector('.js-cards').contains(el);

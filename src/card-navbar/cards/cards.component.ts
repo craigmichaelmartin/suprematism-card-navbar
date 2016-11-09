@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { StateManagerService } from '../../state-manager.service';
-import { StateType } from './state.type';
+import { CardsStateType } from './cards-state.type';
 
 @Component({
   selector: 'supre-card-navbar-cards',
@@ -14,10 +14,10 @@ export class CardNavbarCardsComponent implements OnInit {
   // ------ Properties -------------------------------------------------------
 
   // The stream the template reads from for its state values
-  state$: Observable<StateType>;
+  state$: Observable<CardsStateType>;
 
   // Emits events of raw data from the template
-  rawStateSource: Subject<StateType> = new Subject<StateType>();
+  rawStateSource: Subject<CardsStateType> = new Subject<CardsStateType>();
 
   // The stream of state kept in a service
   stateManagerProxy$ = this.rawStateSource

@@ -3,6 +3,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/takeUntil';
 import { StateManagerService } from '../../../state-manager.service';
+import { CardStateType } from './card-state.type';
 
 @Component({
   selector: 'supre-card-navbar-card',
@@ -34,13 +35,13 @@ export class CardNavbarCardComponent implements OnInit {
   // ------ Properties -------------------------------------------------------
 
   // The stream the template reads from for its state values
-  state$: Observable<string>;
+  state$: Observable<CardStateType>;
 
   // Emits events of raw data from the template
-  rawStateSource: Subject<string> = new Subject<string>();
+  rawStateSource: Subject<CardStateType> = new Subject<CardStateType>();
 
   // The stream of state kept locally
-  localState$ = this.rawStateSource
+  localState$: Observable<CardStateType> = this.rawStateSource
     .filter((state) =>
       ['notActive', 'active', 'preSelected'].indexOf(state) > -1);
 
