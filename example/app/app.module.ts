@@ -4,27 +4,23 @@ import { RouterModule }   from '@angular/router';
 
 import { PageComponent } from './page.component';
 import { MainComponent } from './main.component';
-import { AccountComponent } from '../../src/account/account.component';
+import { DropdownImageModule } from 'suprematism-dropdown-image';
 import { CardNavbarModule } from '../../src/index';
 
 @NgModule({
   declarations: [
-    AccountComponent,
     PageComponent,
     MainComponent
   ],
   imports: [
     BrowserModule,
+    DropdownImageModule,
     CardNavbarModule,
     RouterModule.forRoot([
       { path: '', component: PageComponent },
       { path: ':selectedTab/:selectedCard', component: PageComponent }
     ])
   ],
-  entryComponents: [
-    AccountComponent,
-  ],
-  providers: [],
   bootstrap: [MainComponent]
 })
 export class AppModule { }
