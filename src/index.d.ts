@@ -1,5 +1,6 @@
 export * from './state-manager.service';
 export * from './card-navbar/card-navbar.component';
+export * from './card-navbar/logo/logo.component';
 export * from './card-navbar/menu-item/menu-item.component';
 export * from './card-navbar/cards/cards.component';
 export * from './card-navbar/cards/card/card.component';
