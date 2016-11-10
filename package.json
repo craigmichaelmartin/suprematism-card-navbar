@@ -60,6 +60,7 @@
     "zone.js": "^0.6.23"
   },
   "dependencies": {
+    "suprematism-dropdown-image": "github:cinbcuniversal/suprematism-dropdown-image",
     "suprematism-scss": "github:cinbcuniversal/suprematism-scss#feature/colors"
   }
 }

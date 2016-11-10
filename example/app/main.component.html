@@ -51,14 +51,14 @@
       <supre-card-navbar-card-icon><div class="icon ion-ios-gear"></div></supre-card-navbar-card-icon>
     </supre-card-navbar-card>
     <supre-card-navbar-custom-card style="width: 100%">
-      <supre-account supreDefault="Ford Motor Company" (accountSelected)="accountChanged($event)"
+      <supre-dropdown-image supreDefault="Ford Motor Company" (itemSelected)="accountChanged($event)"
         [supreItems]="[
           { name: 'Applebees', image: '//upload.wikimedia.org/wikipedia/en/b/bc/Applebee%27s.svg' },
           { name: 'Barclays Bank', image: '//upload.wikimedia.org/wikipedia/en/7/7e/Barclays_logo.svg' },
           { name: 'Ford Motor Company', image: '//upload.wikimedia.org/wikipedia/commons/a/a0/Ford_Motor_Company_Logo.svg' },
           { name: 'Toyota Inc', image: '//upload.wikimedia.org/wikipedia/commons/9/9d/Toyota_carlogo.svg' }
         ]"
-      ></supre-account>
+      ></supre-dropdown-image>
     </supre-card-navbar-custom-card>
   </supre-card-navbar-cards>
 </supre-card-navbar>
