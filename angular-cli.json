@@ -15,7 +15,7 @@
       "prefix": "supre",
       "mobile": false,
       "styles": [
-        "scss/style.scss"
+        "assets/fonts/icomoon/style.scss"
       ],
       "scripts": [],
       "environments": {

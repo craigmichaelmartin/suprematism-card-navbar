@@ -21,6 +21,7 @@ we must manually run the publish prehook and save the files.
 
 ## Components
 - [`supre-card-navbar`](#supre-card-navbar)
+- [`supre-card-navbar-logo`](#supre-card-navbar-logo)
 - [`supre-card-navbar-menu-item`](#supre-card-navbar-menu-item)
 - [`supre-card-navbar-cards`](#supre-card-navbar-cards)
 - [`supre-card-navbar-card`](#supre-card-navbar-card)
@@ -33,6 +34,9 @@ The parent component for a card navbar.
 ##### Directives
 - `supreSelectedTab:string` - A string matching the `supreTabId` of a `supre-card-navbar-menu-item` specifing the default selected tab.
 - `supreSelectedCard:string` - A string matching the `supreCardId` for a `supre-card-navbar-card` specifing the default selected card.
+
+#### <a id="supre-card-navbar-logo"></a> `supre-card-navbar-logo`
+An image that will be projected onto the navbar.
 
 #### <a id="supre-card-navbar-menu-item"></a> `supre-card-navbar-menu-item`
 The top level menu items of the card navbar.
@@ -78,6 +82,7 @@ The card icon
 ## Example
 ```
 <supre-card-navbar [supreSelectedTab]="selectedTab" [supreSelectedCard]="selectedCard">
+  <supre-card-navbar-logo><img src="/assets/images/the-G-raph.svg"></supre-card-navbar-logo>
   <supre-card-navbar-menu-item supreTabId="segments" supreRouterLink='segments/create'>Segments</supre-card-navbar-menu-item>
   <supre-card-navbar-cards supreForTab="segments">
     <supre-card-navbar-card supreForTab="segments" supreCardId="create" supreRouterLink [supreDefaultCardForTab]="true">
