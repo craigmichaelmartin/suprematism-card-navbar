@@ -7,16 +7,17 @@ const ACTIVE = 'active';
 const NOTACTIVE = 'notActive';
 const PRESELECTED = 'preSelected';
 const SELECTED = 'selected';
+const SELECTED_BACKGROUNDED = 'selectedBackgrounded';
 
 
 // ------ Color References ----------------------------------------------------
 
 const blueA = 'rgba(0,137,208,1)';
 const blue = 'rgb(0,137,208)';
-const grayHeaderA = 'rgba(230,230,230,1)';
 const grayA = 'rgba(153,153,153,1)';
 const gray = 'rgb(153,153,153)';
 const whiteA = 'rgba(255,255,255,1)';
+const whiteTransparentBase = 'rgba(255,255,255,0.7';
 
 
 // ------ Helper Functions: Menu Items (Tabs) ---------------------------------
@@ -26,13 +27,21 @@ const assertTabHasCorrectStateClass = function(page, tab, state) {
   expect(page.tabHasClass(tab, 'is-notActive')).toEqual(state === NOTACTIVE);
   expect(page.tabHasClass(tab, 'is-selected')).toEqual(state === SELECTED);
   expect(page.tabHasClass(tab, 'is-preSelected')).toEqual(state === PRESELECTED);
+  expect(page.tabHasClass(tab, 'is-selectedBackgrounded')).toEqual(state === SELECTED_BACKGROUNDED);
 };
 
 const assertTabIsSelected = function(page, tab) {
   assertTabHasCorrectStateClass(page, tab, SELECTED);
   expect(page.getSelectedTabsCount()).toEqual(1);
   expect(page.getTabStyles(tab, 'color')).toEqual(blueA);
-  expect(page.getTabStyles(tab, 'background-color')).toEqual(grayHeaderA);
+  expect(page.getTabStyles(tab, 'background-color')).toEqual(whiteA);
+};
+
+const assertTabIsSelectedBackgrounded = function(page, tab) {
+  assertTabHasCorrectStateClass(page, tab, SELECTED_BACKGROUNDED);
+  expect(page.getSelectedBackgroundedTabsCount()).toEqual(1);
+  expect(page.getTabStyles(tab, 'color')).toEqual(blueA);
+  expect(page.getTabStyles(tab, 'background-color')).toContain(whiteTransparentBase);
 };
 
 const assertTabIsActive = function(page, tab) {
@@ -203,8 +212,8 @@ describe('suprematism-card-navbar', function() {
           page.navigateTo('segments/create');
           page.hoverOnTab('campaigns');
         });
-        it('should not affect currently selected tab', () => {
-          assertTabIsSelected(page, 'segments');
+        it('should cause the currently selected tab to become backgrounded', () => {
+          assertTabIsSelectedBackgrounded(page, 'segments');
         });
         it('should render the correct styling for active', () => {
           assertTabIsActive(page, 'campaigns');

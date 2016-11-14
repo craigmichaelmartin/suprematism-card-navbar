@@ -57,10 +57,6 @@ export class CardNavbarMenuItemComponent implements OnInit {
     this.stateManagerService.updateModelFromObservable(
       this.stateManagerProxy$);
 
-    // A stream with the latest value of whether the tab is selected
-    const isSelectedTab$ = this.stateManagerService.getModel
-      .map(({selectedTab}) => !!(selectedTab === this.supreTabId));
-
     // A stream derived from the service specific for notActive events
     const notActive$ = this.stateManagerService.getModel
       .filter(({selectedTab}) => selectedTab !== this.supreTabId)
@@ -68,18 +64,23 @@ export class CardNavbarMenuItemComponent implements OnInit {
 
     // A stream derived from the service specific for selected events
     const selected$ = this.stateManagerService.getModel
-      .filter((currentState) => currentState.selectedTab === this.supreTabId)
+      .filter(({selectedTab}) => selectedTab === this.supreTabId)
       .mapTo('selected');
 
     // A stream derived from the service specific for active events
     const active$ = this.stateManagerService.getModel
-      .filter((currentState) => currentState.activeTab === this.supreTabId)
+      .filter(({activeTab}) => activeTab === this.supreTabId)
       .mapTo('active');
 
+    // A stream derived from the service specific for active events
+    const selectedBackgrounded$ = this.stateManagerService.getModel
+      .filter(({activeTab, selectedTab}) =>
+        activeTab && activeTab !== this.supreTabId && selectedTab === this.supreTabId)
+      .mapTo('selectedBackgrounded');
+
     // The state stream to which template listens
-    this.state$ = this.localState$.merge(notActive$, active$, selected$)
-      .combineLatest(isSelectedTab$)
-      .map(([state, selected]) => selected ? 'selected' : state);
+    this.state$ = this.localState$.merge(
+      notActive$, active$, selected$, selectedBackgrounded$);
   }
 
 

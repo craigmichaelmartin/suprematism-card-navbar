@@ -1,6 +1,7 @@
 import { browser, element, by } from 'protractor';
 
 const strip = str => str.replace(/['" ]+/g, '');
+const hasClass = (klass) => (arg) => arg && arg.split(' ').indexOf(klass) > -1;
 
 export class SuprematismCardNavbarPage {
 
@@ -41,11 +42,11 @@ export class SuprematismCardNavbarPage {
   }
 
   tabHasClass(which, klass) {
-    return this.getTab(which).getAttribute('class').then(arg => arg.indexOf(klass) > -1);
+    return this.getTab(which).getAttribute('class').then(hasClass(klass));
   }
 
   cardHasClass(which, klass) {
-    return this.getCard(which).getAttribute('class').then(arg => arg.indexOf(klass) > -1);
+    return this.getCard(which).getAttribute('class').then(hasClass(klass));
   }
 
   isCardsShown() {
@@ -114,6 +115,10 @@ export class SuprematismCardNavbarPage {
 
   getSelectedTabsCount() {
     return element.all(by.css('supre-card-navbar-menu-item .CardNavbar-topMenuItem.is-selected')).count();
+  }
+
+  getSelectedBackgroundedTabsCount() {
+    return element.all(by.css('supre-card-navbar-menu-item .CardNavbar-topMenuItem.is-selectedBackgrounded')).count();
   }
 
   getActiveTabsCount() {

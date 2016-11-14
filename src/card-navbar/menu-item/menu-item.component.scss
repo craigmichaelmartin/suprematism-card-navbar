@@ -1,6 +1,7 @@
 $blue: rgba(0, 137, 208, 1);
 $blue-transparent: rgba(0, 137, 208, .3);
 $gray: #999999;
+$white-transparent: rgba(255, 255, 255, .75);
 
 a {
   color: inherit;
@@ -37,7 +38,11 @@ a {
 }
 .CardNavbar-topMenuItem.is-selected {
   color: $blue;
-  background-color: #e6e6e6;
+  background-color: white;
+}
+.CardNavbar-topMenuItem.is-selectedBackgrounded {
+  color: $blue;
+  background-color: $white-transparent;
 }
 .CardNavbar-topMenuItem.is-active {
   color: $blue;
@@ -49,6 +54,7 @@ a {
   justify-content: flex-end;
 }
 .CardNavbar-userMenuItem.is-selected,
+.CardNavbar-userMenuItem.is-selectedBackgrounded,
 .CardNavbar-userMenuItem.is-active {
   width: 300px;
 }

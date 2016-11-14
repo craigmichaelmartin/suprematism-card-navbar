@@ -48,7 +48,9 @@ The top level menu items of the card navbar.
 ##### States
 - [default]
 - `is-active` - Denotes menu item is being viewed.
+- `is-notActive` - Denotes menu item is not being viewed.
 - `is-selected` - Denotes the menu item is selected.
+- `is-selectedBackgrounded` - Denotes the menu item is selected, and a different menu item is active.
 
 #### <a id="supre-card-navbar-cards"></a> `supre-card-navbar-cards`
 The container of a set of card options for a menu item.
@@ -82,7 +84,7 @@ The card icon
 ## Example
 ```
 <supre-card-navbar [supreSelectedTab]="selectedTab" [supreSelectedCard]="selectedCard">
-  <supre-card-navbar-logo><img src="/assets/images/the-G-raph.svg"></supre-card-navbar-logo>
+  <supre-card-navbar-logo><img src="assets/images/the-G-raph.svg"></supre-card-navbar-logo>
   <supre-card-navbar-menu-item supreTabId="segments" supreRouterLink='segments/create'>Segments</supre-card-navbar-menu-item>
   <supre-card-navbar-cards supreForTab="segments">
     <supre-card-navbar-card supreForTab="segments" supreCardId="create" supreRouterLink [supreDefaultCardForTab]="true">

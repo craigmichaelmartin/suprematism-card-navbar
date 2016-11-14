@@ -42,12 +42,6 @@ var CardNavbarMenuItemComponent = (function () {
         var _this = this;
         // Update the service with the events from the local proxy stream
         this.stateManagerService.updateModelFromObservable(this.stateManagerProxy$);
-        // A stream with the latest value of whether the tab is selected
-        var isSelectedTab$ = this.stateManagerService.getModel
-            .map(function (_a) {
-            var selectedTab = _a.selectedTab;
-            return !!(selectedTab === _this.supreTabId);
-        });
         // A stream derived from the service specific for notActive events
         var notActive$ = this.stateManagerService.getModel
             .filter(function (_a) {
@@ -57,19 +51,27 @@ var CardNavbarMenuItemComponent = (function () {
             .mapTo('notActive');
         // A stream derived from the service specific for selected events
         var selected$ = this.stateManagerService.getModel
-            .filter(function (currentState) { return currentState.selectedTab === _this.supreTabId; })
+            .filter(function (_a) {
+            var selectedTab = _a.selectedTab;
+            return selectedTab === _this.supreTabId;
+        })
             .mapTo('selected');
         // A stream derived from the service specific for active events
         var active$ = this.stateManagerService.getModel
-            .filter(function (currentState) { return currentState.activeTab === _this.supreTabId; })
+            .filter(function (_a) {
+            var activeTab = _a.activeTab;
+            return activeTab === _this.supreTabId;
+        })
             .mapTo('active');
+        // A stream derived from the service specific for active events
+        var selectedBackgrounded$ = this.stateManagerService.getModel
+            .filter(function (_a) {
+            var activeTab = _a.activeTab, selectedTab = _a.selectedTab;
+            return activeTab && activeTab !== _this.supreTabId && selectedTab === _this.supreTabId;
+        })
+            .mapTo('selectedBackgrounded');
         // The state stream to which template listens
-        this.state$ = this.localState$.merge(notActive$, active$, selected$)
-            .combineLatest(isSelectedTab$)
-            .map(function (_a) {
-            var state = _a[0], selected = _a[1];
-            return selected ? 'selected' : state;
-        });
+        this.state$ = this.localState$.merge(notActive$, active$, selected$, selectedBackgrounded$);
     };
     // ------ Public Methods ---------------------------------------------------
     CardNavbarMenuItemComponent.prototype.isInCards = function ($event) {
