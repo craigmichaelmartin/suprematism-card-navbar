@@ -1,5 +1,5 @@
 <div
-    class="CardNavbar-cards"
+    class="CardNavbar-cardsForTab"
     *ngIf="(state$ | async) !== 'notActive'"
     (mouseleave)="!isInMenuItem($event) && this.rawStateSource.next('notActive');"
   >
