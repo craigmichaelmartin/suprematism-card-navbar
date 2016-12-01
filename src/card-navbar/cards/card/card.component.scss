@@ -39,11 +39,13 @@ a {
   color: $gray;
   font-weight: 600;
   display: block;
+  line-height: 1em;
 }
 .CardNavbar-cardIcon {
   font-size: 40px;
   text-align: center;
   color: $gray;
+  line-height: 1em;
 }
 .CardNavbar-cardTitle,
 .CardNavbar-cardIcon {
