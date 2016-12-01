@@ -22,3 +22,7 @@
   width: 75px;
   height: 60px;
   z-index: 999; }
+
+.CardNavbar-cards {
+  position: relative;
+  z-index: 888; }
