@@ -1,6 +1,4 @@
-$blue: rgba(0, 137, 208, 1);
-$blue-transparent: rgba(0, 137, 208, .3);
-$gray: #999999;
+@import '../../../node_modules/suprematism-scss/colors';
 
 :host[suprefortab="user"] {
   width: 300px;

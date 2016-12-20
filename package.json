@@ -60,6 +60,6 @@
   },
   "dependencies": {
     "suprematism-dropdown-image": "github:cinbcuniversal/suprematism-dropdown-image",
-    "suprematism-scss": "github:cinbcuniversal/suprematism-scss"
+    "suprematism-scss": "github:cinbcuniversal/suprematism-scss#z-indexes"
   }
 }
