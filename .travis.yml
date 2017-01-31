@@ -1,0 +1,17 @@
+language: node_js
+node_js: '6'
+before_install:
+- npm install -g yarn
+install: yarn
+script:
+- npm run example &
+- npm run e2e-ci
+addons:
+  sauce_connect:
+    username: xerona
+    access_key:
+      secure: avpQNQu8D7n8Fk494oRvDmB0bsuqwSWP40Zb/Q+AE/jQom8OcBf020jk5E6qEKVRFVShR7v2SVZwTZQsEUOO99qcSNBZhtPcfTSIaiPqLYMaQaEMq/5yXUqPrmYHHWs+HhFCzYJZ20EBKIxBOQ1+uxi3XMG4WXlW3/5YMDo50349sfLyLT5rUDibA/grNHiqA9tz4vS724mLlwsdGJs2/qwWoDL84kzulaDs2jKF+mS0WD7Hmpcbh1xUwc881xesmOfqvdswh3ZWzSwibZTF3jT+dC/yAJgCUZ6/7KXHpv10iloZlljqXV60uIWDaOG6Y5sd7D2kkcUxOmAUpsrAJmaty/GNQlZubJ3DPeJcr6eeXf3N62jIej6uQ1SYQhe1wx7S6ur8Gjt11Ozk8569KfJhjLYJzUBsAmzdEUUugKvOhV+NcJ+MR4Lm45tuDcUrTWRp2SiBs0upVVkl/LVqTq5Jz4De6EbK/cr3oNrPJfKTxmPka5vtL3SxGT92YkrsYmmRoikmBy0quScjmIVNavj7gJJENO2gcuEdL/J1JPCIL9XkjuEOewwryGN4exARWV/XCSnX5hDb4JI7QiVJzgT00RiasvOjz9eWJMfB1HVUut9nPAOgqIY9dm4KIKEaNLtIFyqUTXwr9q47En6ZZ9V+ipe2ULUifFJ9yuHsvJI=
+
+# To update ownership
+# install travis cli with `gem install travis -v 1.8.6 --no-rdoc --no-ri`
+# generate secure access_key using `travis encrypt <saucelabs access key>`
