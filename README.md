@@ -152,6 +152,5 @@ markup (out of necessity)
 Unfortanely, I was not able to accomplish this with ng2 due to limitations
 with ng-content's selector only going one level deep.
 
-
 [travis-badge]: https://travis-ci.org/CINBCUniversal/suprematism-card-navbar.svg?branch=master
 [travis-badge-url]: https://travis-ci.org/CINBCUniversal/suprematism-card-navbar
