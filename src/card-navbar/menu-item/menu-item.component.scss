@@ -1,4 +1,4 @@
-@import '../../../node_modules/suprematism-scss/colors';
+@import '../../../node_modules/suprematism-style-guide/dist/utils/colors';
 
 $white-transparent: rgba(255, 255, 255, .75);
 
@@ -27,7 +27,7 @@ a {
   font-family: Verdana;
   text-transform: uppercase;
   color: white;
-  background-color: $blue;
+  background-color: $purple;
   height: 100%;
   min-width: 100px;
   display: flex;
@@ -36,15 +36,15 @@ a {
 .CardNavbar-topMenuItem a {
 }
 .CardNavbar-topMenuItem.is-selected {
-  color: $blue;
+  color: $purple;
   background-color: white;
 }
 .CardNavbar-topMenuItem.is-selectedBackgrounded {
-  color: $blue;
+  color: $purple;
   background-color: $white-transparent;
 }
 .CardNavbar-topMenuItem.is-active {
-  color: $blue;
+  color: $purple;
   background-color: white;
 }
 .CardNavbar-userMenuItem {

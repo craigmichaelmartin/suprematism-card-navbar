@@ -12,10 +12,10 @@ const SELECTED_BACKGROUNDED = 'selectedBackgrounded';
 
 // ------ Color References ----------------------------------------------------
 
-const blueA = 'rgba(0,137,208,1)';
-const blue = 'rgb(0,137,208)';
-const grayA = 'rgba(153,153,153,1)';
-const gray = 'rgb(153,153,153)';
+const purpleA = 'rgba(100,96,170,1)';
+const purple = 'rgb(100,96,170)';
+const grayA = 'rgba(204,204,204,1)';
+const gray = 'rgb(204,204,204)';
 const whiteA = 'rgba(255,255,255,1)';
 const whiteTransparentBase = 'rgba(255,255,255,0.7';
 
@@ -33,27 +33,27 @@ const assertTabHasCorrectStateClass = function(page, tab, state) {
 const assertTabIsSelected = function(page, tab) {
   assertTabHasCorrectStateClass(page, tab, SELECTED);
   expect(page.getSelectedTabsCount()).toEqual(1);
-  expect(page.getTabStyles(tab, 'color')).toEqual(blueA);
+  expect(page.getTabStyles(tab, 'color')).toEqual(purpleA);
   expect(page.getTabStyles(tab, 'background-color')).toEqual(whiteA);
 };
 
 const assertTabIsSelectedBackgrounded = function(page, tab) {
   assertTabHasCorrectStateClass(page, tab, SELECTED_BACKGROUNDED);
   expect(page.getSelectedBackgroundedTabsCount()).toEqual(1);
-  expect(page.getTabStyles(tab, 'color')).toEqual(blueA);
+  expect(page.getTabStyles(tab, 'color')).toEqual(purpleA);
   expect(page.getTabStyles(tab, 'background-color')).toContain(whiteTransparentBase);
 };
 
 const assertTabIsActive = function(page, tab) {
   assertTabHasCorrectStateClass(page, tab, ACTIVE);
-  expect(page.getTabStyles(tab, 'color')).toEqual(blueA);
+  expect(page.getTabStyles(tab, 'color')).toEqual(purpleA);
   expect(page.getTabStyles(tab, 'background-color')).toEqual(whiteA);
 };
 
 const assertTabIsNotActive = function(page, tab) {
   assertTabHasCorrectStateClass(page, tab, NOTACTIVE);
   expect(page.getTabStyles(tab, 'color')).toEqual(whiteA);
-  expect(page.getTabStyles(tab, 'background-color')).toEqual(blueA);
+  expect(page.getTabStyles(tab, 'background-color')).toEqual(purpleA);
 };
 
 
@@ -67,8 +67,8 @@ const assertCardHasCorrectStateClass = function(page, card, state) {
 const assertCardIsSelected = function(page, card) {
   assertCardHasCorrectStateClass(page, card, SELECTED);
   expect(page.getSelectedCardsCount()).toEqual(1);
-  expect(page.getCardStyles(card, 'background-color')).toEqual(blueA);
-  expect(page.getCardStyles(card, 'border-color')).toEqual(blue);
+  expect(page.getCardStyles(card, 'background-color')).toEqual(purpleA);
+  expect(page.getCardStyles(card, 'border-color')).toEqual(purple);
   expect(page.getCardTitleStyles(card, 'color')).toEqual(whiteA);
   expect(page.getCardIconStyles(card, 'color')).toEqual(whiteA);
 };
@@ -84,9 +84,9 @@ const assertCardIsNotActive = function(page, card) {
 const assertCardIsActive = function(page, card) {
   assertCardHasCorrectStateClass(page, card, ACTIVE);
   expect(page.getCardStyles(card, 'background-color')).toEqual(whiteA);
-  expect(page.getCardStyles(card, 'border-color')).toEqual(blue);
-  expect(page.getCardIconStyles(card, 'color')).toEqual(blueA);
-  expect(page.getCardTitleStyles(card, 'color')).toEqual(blueA);
+  expect(page.getCardStyles(card, 'border-color')).toEqual(purple);
+  expect(page.getCardIconStyles(card, 'color')).toEqual(purpleA);
+  expect(page.getCardTitleStyles(card, 'color')).toEqual(purpleA);
 };
 
 const assertNoCardsShown = function(page) {

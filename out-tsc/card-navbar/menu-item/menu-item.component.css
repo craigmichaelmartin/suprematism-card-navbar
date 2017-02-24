@@ -1,3 +1,10 @@
+/**
+ * Design Reference:
+ * https://cacoo.com/diagrams/88x93Ppap4rtGUhs#5F65C
+ */
+/**
+ * Collection of the colors
+ */
 a {
   color: inherit;
   text-decoration: none; }
@@ -22,22 +29,22 @@ a {
   font-family: Verdana;
   text-transform: uppercase;
   color: white;
-  background-color: #0089d0;
+  background-color: #6460aa;
   height: 100%;
   min-width: 100px;
   display: flex;
   align-items: center; }
 
 .CardNavbar-topMenuItem.is-selected {
-  color: #0089d0;
+  color: #6460aa;
   background-color: white; }
 
 .CardNavbar-topMenuItem.is-selectedBackgrounded {
-  color: #0089d0;
+  color: #6460aa;
   background-color: rgba(255, 255, 255, 0.75); }
 
 .CardNavbar-topMenuItem.is-active {
-  color: #0089d0;
+  color: #6460aa;
   background-color: white; }
 
 .CardNavbar-userMenuItem {
