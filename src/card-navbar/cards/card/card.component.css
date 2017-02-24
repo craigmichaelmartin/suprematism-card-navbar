@@ -1,3 +1,10 @@
+/**
+ * Design Reference:
+ * https://cacoo.com/diagrams/88x93Ppap4rtGUhs#5F65C
+ */
+/**
+ * Collection of the colors
+ */
 a {
   color: inherit;
   text-decoration: none; }
@@ -10,20 +17,20 @@ a {
   margin-bottom: 30px;
   height: 100px;
   width: 100px;
-  border: 2px dotted #999999;
+  border: 2px dotted #cccccc;
   border-radius: 12px;
   cursor: pointer; }
 
 .CardNavbar-card.is-active {
-  border: 2px solid #0089d0; }
+  border: 2px solid #6460aa; }
 
 .CardNavbar-card.is-preSelected {
-  border: 2px solid #0089d0;
-  background-color: rgba(0, 137, 208, 0.3); }
+  border: 2px solid #6460aa;
+  background-color: rgba(100, 96, 170, 0.3); }
 
 .CardNavbar-card.is-selected {
-  border: 2px solid #0089d0;
-  background-color: #0089d0; }
+  border: 2px solid #6460aa;
+  background-color: #6460aa; }
 
 .CardNavbar-cardTitle {
   margin-top: 22px;
@@ -31,7 +38,7 @@ a {
   margin-bottom: 12px;
   text-align: center;
   text-transform: uppercase;
-  color: #999999;
+  color: #cccccc;
   font-weight: 600;
   display: block;
   line-height: 1em; }
@@ -39,7 +46,7 @@ a {
 .CardNavbar-cardIcon {
   font-size: 36px;
   text-align: center;
-  color: #999999;
+  color: #cccccc;
   line-height: 1em; }
 
 .CardNavbar-cardTitle,
@@ -50,7 +57,7 @@ a {
 .CardNavbar-card.is-active .CardNavbar-cardTitle,
 .CardNavbar-card.is-preSelected .CardNavbar-cardIcon,
 .CardNavbar-card.is-preSelected .CardNavbar-cardTitle {
-  color: #0089d0; }
+  color: #6460aa; }
 
 .CardNavbar-card.is-selected .CardNavbar-cardIcon,
 .CardNavbar-card.is-selected .CardNavbar-cardTitle {
