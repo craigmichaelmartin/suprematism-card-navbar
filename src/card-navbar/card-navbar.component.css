@@ -1,3 +1,10 @@
+/**
+ * Design Reference:
+ * https://cacoo.com/diagrams/88x93Ppap4rtGUhs#5F65C
+ */
+/**
+ * Collection of the colors
+ */
 .CardNavbar {
   display: block;
   font-family: Verdana;
@@ -8,7 +15,7 @@
   display: flex;
   align-items: center;
   height: 30px;
-  background-color: #0089d0; }
+  background-color: #6460aa; }
 
 .CardNavbar-title {
   margin-left: 85px;
