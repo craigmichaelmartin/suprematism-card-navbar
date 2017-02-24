@@ -1,4 +1,6 @@
-@import '../../../../node_modules/suprematism-scss/colors';
+@import '../../../../node_modules/suprematism-style-guide/dist/utils/colors';
+
+$purple-transparent-light: rgba(100, 96, 170, .3);
 
 a {
   color: inherit;
@@ -13,20 +15,20 @@ a {
   margin-bottom: 30px;
   height: 100px;
   width: 100px;
-  border: 2px dotted $gray-light-warm;
+  border: 2px dotted $lite-gray;
   border-radius: 12px;
   cursor: pointer;
 }
 .CardNavbar-card.is-active {
-  border: 2px solid $blue;
+  border: 2px solid $purple;
 }
 .CardNavbar-card.is-preSelected {
-  border: 2px solid $blue;
-  background-color: $blue-transparent-light;
+  border: 2px solid $purple;
+  background-color: $purple-transparent-light;
 }
 .CardNavbar-card.is-selected {
-  border: 2px solid $blue;
-  background-color: $blue;
+  border: 2px solid $purple;
+  background-color: $purple;
 }
 .CardNavbar-cardTitle {
   margin-top: 22px;
@@ -34,7 +36,7 @@ a {
   margin-bottom: 12px;
   text-align: center;
   text-transform: uppercase;
-  color: $gray-light-warm;
+  color: $lite-gray;
   font-weight: 600;
   display: block;
   line-height: 1em;
@@ -42,7 +44,7 @@ a {
 .CardNavbar-cardIcon {
   font-size: 36px;
   text-align: center;
-  color: $gray-light-warm;
+  color: $lite-gray;
   line-height: 1em;
 }
 .CardNavbar-cardTitle,
@@ -53,7 +55,7 @@ a {
 .CardNavbar-card.is-active .CardNavbar-cardTitle,
 .CardNavbar-card.is-preSelected .CardNavbar-cardIcon,
 .CardNavbar-card.is-preSelected .CardNavbar-cardTitle {
-  color: $blue;
+  color: $purple;
 }
 .CardNavbar-card.is-selected .CardNavbar-cardIcon,
 .CardNavbar-card.is-selected .CardNavbar-cardTitle {
