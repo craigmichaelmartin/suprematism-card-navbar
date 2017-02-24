@@ -1,5 +1,5 @@
-@import '../../node_modules/suprematism-scss/z-indexes';
-@import '../../node_modules/suprematism-scss/colors';
+@import '../../node_modules/suprematism-style-guide/dist/utils/z-indexes';
+@import '../../node_modules/suprematism-style-guide/dist/utils/colors';
 
 .CardNavbar {
   display: block;
@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   height: 30px;
-  background-color: $blue;
+  background-color: $purple;
 }
 .CardNavbar-title {
   margin-left: 85px;
