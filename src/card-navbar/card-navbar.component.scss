@@ -14,18 +14,9 @@
   background-color: $purple;
 }
 .CardNavbar-title {
-  margin-left: 85px;
-  width: 155px;
-  font-size: 14px;
-  color: white;
-}
-.Logo {
-  position: absolute;
-  top: 1px;
-  left: 0px;
-  width: 75px;
-  height: 60px;
-  z-index: $z-index-popover;
+  margin-left: 20px;
+  margin-right: 120px;
+  width: 55px;
 }
 .CardNavbar-cards {
   position: relative;

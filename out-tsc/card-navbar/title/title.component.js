@@ -9,17 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var CardNavbarLogoComponent = (function () {
-    function CardNavbarLogoComponent() {
+var CardNavbarTitleComponent = (function () {
+    function CardNavbarTitleComponent() {
     }
-    CardNavbarLogoComponent = __decorate([
+    CardNavbarTitleComponent = __decorate([
         core_1.Component({
-            selector: 'supre-card-navbar-logo',
-            template: require('./logo.component.html'),
+            selector: 'supre-card-navbar-title',
+            template: require('./title.component.html'),
         }), 
         __metadata('design:paramtypes', [])
-    ], CardNavbarLogoComponent);
-    return CardNavbarLogoComponent;
+    ], CardNavbarTitleComponent);
+    return CardNavbarTitleComponent;
 }());
-exports.CardNavbarLogoComponent = CardNavbarLogoComponent;
-//# sourceMappingURL=/Users/craigmartin/projects/suprematism-card-navbar/src/card-navbar/logo/logo.component.js.map
+exports.CardNavbarTitleComponent = CardNavbarTitleComponent;
+//# sourceMappingURL=/Users/craigmartin/projects/suprematism-card-navbar/src/card-navbar/title/title.component.js.map

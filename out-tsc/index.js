@@ -16,8 +16,8 @@ var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
 var state_manager_service_1 = require('./state-manager.service');
 var card_navbar_component_1 = require('./card-navbar/card-navbar.component');
-var logo_component_1 = require('./card-navbar/logo/logo.component');
 var menu_item_component_1 = require('./card-navbar/menu-item/menu-item.component');
+var title_component_1 = require('./card-navbar/title/title.component');
 var cards_component_1 = require('./card-navbar/cards/cards.component');
 var card_component_1 = require('./card-navbar/cards/card/card.component');
 var card_title_component_1 = require('./card-navbar/cards/card/card-title/card-title.component');
@@ -25,8 +25,8 @@ var card_icon_component_1 = require('./card-navbar/cards/card/card-icon/card-ico
 var custom_card_component_1 = require('./card-navbar/cards/custom-card/custom-card.component');
 __export(require('./state-manager.service'));
 __export(require('./card-navbar/card-navbar.component'));
-__export(require('./card-navbar/logo/logo.component'));
 __export(require('./card-navbar/menu-item/menu-item.component'));
+__export(require('./card-navbar/title/title.component'));
 __export(require('./card-navbar/cards/cards.component'));
 __export(require('./card-navbar/cards/card/card.component'));
 __export(require('./card-navbar/cards/card/card-title/card-title.component'));
@@ -46,8 +46,8 @@ var CardNavbarModule = (function () {
             ],
             declarations: [
                 card_navbar_component_1.CardNavbarComponent,
-                logo_component_1.CardNavbarLogoComponent,
                 menu_item_component_1.CardNavbarMenuItemComponent,
+                title_component_1.CardNavbarTitleComponent,
                 cards_component_1.CardNavbarCardsComponent,
                 card_component_1.CardNavbarCardComponent,
                 card_title_component_1.CardNavbarCardTitleComponent,
@@ -56,8 +56,8 @@ var CardNavbarModule = (function () {
             ],
             exports: [
                 card_navbar_component_1.CardNavbarComponent,
-                logo_component_1.CardNavbarLogoComponent,
                 menu_item_component_1.CardNavbarMenuItemComponent,
+                title_component_1.CardNavbarTitleComponent,
                 cards_component_1.CardNavbarCardsComponent,
                 card_component_1.CardNavbarCardComponent,
                 card_title_component_1.CardNavbarCardTitleComponent,
@@ -66,8 +66,8 @@ var CardNavbarModule = (function () {
             ],
             entryComponents: [
                 card_navbar_component_1.CardNavbarComponent,
-                logo_component_1.CardNavbarLogoComponent,
                 menu_item_component_1.CardNavbarMenuItemComponent,
+                title_component_1.CardNavbarTitleComponent,
                 cards_component_1.CardNavbarCardsComponent,
                 card_component_1.CardNavbarCardComponent,
                 card_title_component_1.CardNavbarCardTitleComponent,
