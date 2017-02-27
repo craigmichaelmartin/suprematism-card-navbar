@@ -1,10 +1,8 @@
-<div class="Logo">
-  <ng-content select="supre-card-navbar-logo"></ng-content>
-</div>
-
 <div class="CardNavbar">
   <div class="CardNavbar-navbar">
-    <span class="icon-g-raph-type CardNavbar-title"></span>
+    <span class="CardNavbar-title">
+      <ng-content select="supre-card-navbar-title"></ng-content>
+    </span>
     <ng-content select="supre-card-navbar-menu-item"></ng-content>
   </div>
   <div class="CardNavbar-cards js-cards">
