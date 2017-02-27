@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule }   from '@angular/router';
 import { StateManagerService } from './state-manager.service';
 import { CardNavbarComponent } from './card-navbar/card-navbar.component';
-import { CardNavbarLogoComponent } from './card-navbar/logo/logo.component';
 import { CardNavbarMenuItemComponent } from './card-navbar/menu-item/menu-item.component';
+import { CardNavbarTitleComponent } from './card-navbar/title/title.component';
 import { CardNavbarCardsComponent } from './card-navbar/cards/cards.component';
 import { CardNavbarCardComponent } from './card-navbar/cards/card/card.component';
 import { CardNavbarCardTitleComponent } from './card-navbar/cards/card/card-title/card-title.component';
@@ -13,8 +13,8 @@ import { CardNavbarCustomCardComponent } from './card-navbar/cards/custom-card/c
 
 export * from './state-manager.service';
 export * from './card-navbar/card-navbar.component';
-export * from './card-navbar/logo/logo.component';
 export * from './card-navbar/menu-item/menu-item.component';
+export * from './card-navbar/title/title.component';
 export * from './card-navbar/cards/cards.component';
 export * from './card-navbar/cards/card/card.component';
 export * from './card-navbar/cards/card/card-title/card-title.component';
@@ -31,8 +31,8 @@ export * from './card-navbar/cards/custom-card/custom-card.component';
   ],
   declarations: [
     CardNavbarComponent,
-    CardNavbarLogoComponent,
     CardNavbarMenuItemComponent,
+    CardNavbarTitleComponent,
     CardNavbarCardsComponent,
     CardNavbarCardComponent,
     CardNavbarCardTitleComponent,
@@ -41,8 +41,8 @@ export * from './card-navbar/cards/custom-card/custom-card.component';
   ],
   exports: [
     CardNavbarComponent,
-    CardNavbarLogoComponent,
     CardNavbarMenuItemComponent,
+    CardNavbarTitleComponent,
     CardNavbarCardsComponent,
     CardNavbarCardComponent,
     CardNavbarCardTitleComponent,
@@ -51,8 +51,8 @@ export * from './card-navbar/cards/custom-card/custom-card.component';
   ],
   entryComponents: [
     CardNavbarComponent,
-    CardNavbarLogoComponent,
     CardNavbarMenuItemComponent,
+    CardNavbarTitleComponent,
     CardNavbarCardsComponent,
     CardNavbarCardComponent,
     CardNavbarCardTitleComponent,
