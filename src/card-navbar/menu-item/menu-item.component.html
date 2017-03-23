@@ -8,6 +8,6 @@
     [ngClass] = "['is-' + (state$ | async), supreTabId === 'user' ? 'CardNavbar-userMenuItem' : '']"
   >
     <ng-content></ng-content>
-    <span *ngIf="supreTabId === 'user'" class="icon-usericon CardNavbar-userMenuIcon"></span>
+    <span *ngIf="supreTabId === 'user'" class="u-supre-icon u-supre-icon--user-menu-icon CardNavbar-userMenuIcon"></span>
   </div>
 </a>
