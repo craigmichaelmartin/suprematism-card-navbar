@@ -15,7 +15,7 @@ var CardNavbarTitleComponent = (function () {
     CardNavbarTitleComponent = __decorate([
         core_1.Component({
             selector: 'supre-card-navbar-title',
-            template: require('./title.component.html'),
+            template: require('./title.component.html')
         }), 
         __metadata('design:paramtypes', [])
     ], CardNavbarTitleComponent);
