@@ -7,8 +7,8 @@ import { MenuItemStateType } from './menu-item-state.type';
 
 @Component({
   selector: 'supre-card-navbar-menu-item',
-  template: require('./menu-item.component.html'),
-  styles: [require('./menu-item.component.css')]
+  templateUrl: './menu-item.component.html',
+  styleUrls: ['./menu-item.component.scss']
 })
 export class CardNavbarMenuItemComponent implements OnInit {
 

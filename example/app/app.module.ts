@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule }   from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { PageComponent } from './page.component';
 import { MainComponent } from './main.component';
-import { DropdownImageModule } from 'suprematism-dropdown-image';
+// import { DropdownImageModule } from 'suprematism-dropdown-image';
 import { CardNavbarModule } from '../../src/index';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { CardNavbarModule } from '../../src/index';
   ],
   imports: [
     BrowserModule,
-    DropdownImageModule,
+    // DropdownImageModule,
     CardNavbarModule,
     RouterModule.forRoot([
       { path: '', component: PageComponent },

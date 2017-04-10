@@ -5,8 +5,8 @@ import { StateManagerService } from '../state-manager.service';
 
 @Component({
   selector: 'supre-card-navbar',
-  template: require('./card-navbar.component.html'),
-  styles: [require('./card-navbar.component.css')]
+  templateUrl: './card-navbar.component.html',
+  styleUrls: ['./card-navbar.component.scss']
 })
 export class CardNavbarComponent implements OnInit {
 
