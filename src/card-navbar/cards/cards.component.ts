@@ -6,8 +6,8 @@ import { CardsStateType } from './cards-state.type';
 
 @Component({
   selector: 'supre-card-navbar-cards',
-  template: require('./cards.component.html'),
-  styles: [require('./cards.component.css')]
+  templateUrl: './cards.component.html',
+  styleUrls: ['./cards.component.scss']
 })
 export class CardNavbarCardsComponent implements OnInit {
 
