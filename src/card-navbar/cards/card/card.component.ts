@@ -18,7 +18,7 @@ export class CardNavbarCardComponent implements OnInit {
 
   @Input() supreCardId: string;
 
-  @Input() supreDefaultCardForTab: boolean = false;
+  @Input() supreDefaultCardForTab = false;
 
   routerLink: string;
   @Input()
@@ -90,6 +90,13 @@ export class CardNavbarCardComponent implements OnInit {
     this.state$ = this.localState$.merge(notActive$, selected$)
       .combineLatest(isSelectedCard$)
       .map(([state, selected]) => selected ? 'selected' : state);
+  }
+
+  onClick(event) {
+    if (!this.routerLink) {
+      event.preventDefault();
+      return;
+    }
   }
 
 }

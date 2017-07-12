@@ -1,10 +1,10 @@
-<a [routerLink]="routerLink">
+<a (click)="onClick($event)" [routerLink]="routerLink">
   <div class="CardNavbar-card"
-      (mousedown)="rawStateSource.next('preSelected')"
-      (mouseup)="rawStateSource.next('selected')"
-      (mouseenter)="rawStateSource.next('active')"
-      (mouseout)="rawStateSource.next('notActive')"
-      [ngClass]="['is-' + (state$ | async)]"
+    (mousedown)="routerLink && rawStateSource.next('preSelected')"
+    (mouseup)="routerLink && rawStateSource.next('selected')"
+    (mouseenter)="routerLink && rawStateSource.next('active')"
+    (mouseout)="routerLink && rawStateSource.next('notActive')"
+    [ngClass]="[routerLink ? 'is-' + (state$ | async) : 'is-disabled']"
   >
     <div class="CardNavbar-cardTitle"><ng-content select="supre-card-navbar-card-title"></ng-content></div>
     <div class="CardNavbar-cardIcon"><ng-content select="supre-card-navbar-card-icon"></ng-content></div>

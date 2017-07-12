@@ -19,6 +19,9 @@ a {
   border-radius: 12px;
   cursor: pointer;
 }
+.CardNavbar-card.is-disabled {
+  cursor: default;
+}
 .CardNavbar-card.is-active {
   border: 2px solid $purple;
 }

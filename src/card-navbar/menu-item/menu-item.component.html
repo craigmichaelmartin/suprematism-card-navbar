@@ -1,7 +1,7 @@
-<a [routerLink]="supreRouterLink" class="CardNavbar-topMenuItemContainer">
+<a (click)="onClick($event)" [routerLink]="routerLink" class="CardNavbar-topMenuItemContainer">
   <div
-    (mousedown)="rawStateSource.next('preSelected')"
-    (mouseup)="rawStateSource.next('selected')"
+    (mousedown)="routerLink && rawStateSource.next('preSelected')"
+    (mouseup)="routerLink && rawStateSource.next('selected')"
     (mouseenter)="rawStateSource.next('active')"
     (mouseleave)="!isInCards($event) && rawStateSource.next('notActive')"
     class="CardNavbar-topMenuItem"
