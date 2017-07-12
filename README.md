@@ -45,7 +45,7 @@ The top level menu items of the card navbar.
 
 ##### Directives
 - `supreTabId:string` - A string uniquely identifying the menu item.
-- `supreRouterLink:string` - A string identifying the routerLink for the menu item.
+- `supreRouterLink?:string` - A string identifying the routerLink for the menu item, or leave empty if no a route.
 
 ##### States
 - [default]
