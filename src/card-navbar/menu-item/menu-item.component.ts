@@ -42,7 +42,15 @@ export class CardNavbarMenuItemComponent implements OnInit {
 
   @Input() supreTabId: string;
 
-  @Input() supreRouterLink: string;
+  routerLink: string;
+  @Input()
+  set supreRouterLink(routerLink) {
+    if (routerLink) {
+      this.routerLink = routerLink;
+    } else {
+      this.routerLink = void 0;
+    }
+  }
 
 
   // ------ Constructor ------------------------------------------------------
@@ -90,6 +98,13 @@ export class CardNavbarMenuItemComponent implements OnInit {
     // Todo: using document.querySelector doesn't seem like the angular way
     const el = $event.toElement || $event.relatedTarget;
     return document.querySelector('.js-cards').contains(el);
+  }
+
+  onClick(event) {
+    if (!this.routerLink) {
+      event.preventDefault();
+      return;
+    }
   }
 
 }
