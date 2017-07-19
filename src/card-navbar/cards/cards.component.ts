@@ -53,9 +53,7 @@ export class CardNavbarCardsComponent implements OnInit {
       .distinctUntilChanged()
       .switchMap((activeTab) =>
         this.supreForTab === activeTab
-          ? activeTab === 'user'
-            ? Observable.interval(0).mapTo('active').take(1)
-            : Observable.interval(500).mapTo('active').take(1)
+          ? Observable.interval(0).mapTo('active').take(1)
           : Observable.interval(0).mapTo('notActive').take(1));
 
     // The state stream to which template listens
