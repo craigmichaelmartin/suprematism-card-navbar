@@ -22,13 +22,8 @@ export * from './card-navbar/cards/card/card-icon/card-icon.component';
 export * from './card-navbar/cards/custom-card/custom-card.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule
-  ],
-  providers: [
-    StateManagerService
-  ],
+  imports: [CommonModule, RouterModule],
+  providers: [StateManagerService],
   declarations: [
     CardNavbarComponent,
     CardNavbarMenuItemComponent,
@@ -37,7 +32,7 @@ export * from './card-navbar/cards/custom-card/custom-card.component';
     CardNavbarCardComponent,
     CardNavbarCardTitleComponent,
     CardNavbarCardIconComponent,
-    CardNavbarCustomCardComponent,
+    CardNavbarCustomCardComponent
   ],
   exports: [
     CardNavbarComponent,
@@ -47,7 +42,7 @@ export * from './card-navbar/cards/custom-card/custom-card.component';
     CardNavbarCardComponent,
     CardNavbarCardTitleComponent,
     CardNavbarCardIconComponent,
-    CardNavbarCustomCardComponent,
+    CardNavbarCustomCardComponent
   ],
   entryComponents: [
     CardNavbarComponent,
@@ -57,7 +52,7 @@ export * from './card-navbar/cards/custom-card/custom-card.component';
     CardNavbarCardComponent,
     CardNavbarCardTitleComponent,
     CardNavbarCardIconComponent,
-    CardNavbarCustomCardComponent,
+    CardNavbarCustomCardComponent
   ]
 })
 export class CardNavbarModule {}

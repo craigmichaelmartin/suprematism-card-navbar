@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
-import * as Rx from 'rxjs';
 import { Model } from './model';
 import { Observable } from 'rxjs/Observable';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/scan';
+import 'rxjs/add/operator/share';
 
-export interface ActionFunc {
-  (currentState: Model): Model;
-}
+export type ActionFunc = (currentState: Model) => Model;
 
 let cid = 0;
 
 @Injectable()
 export class StateManagerService {
-  private model: Rx.Subject<ActionFunc>;
-  private currentModel: Rx.ReplaySubject<Model>;
+  private model: Subject<ActionFunc>;
+  private currentModel: ReplaySubject<Model>;
 
   static getUniqueId(prefix = 'cid') {
     cid += 1;
@@ -20,23 +22,27 @@ export class StateManagerService {
   }
 
   constructor() {
-    this.model = new Rx.Subject<ActionFunc>();
-    this.currentModel = new Rx.ReplaySubject<Model>(1);
+    this.model = new Subject<ActionFunc>();
+    this.currentModel = new ReplaySubject<Model>(1);
   }
 
-  get getModel(): Rx.ReplaySubject<Model> {
+  get getModel(): ReplaySubject<Model> {
     return this.currentModel;
   }
 
+  /* tslint:disable:no-shadowed-variable */
   set setModel(Model: any) {
     this.model
       .startWith(Model)
-      .scan((currentState: Model, actionMethod: ActionFunc) => actionMethod(currentState))
+      .scan((currentState: Model, actionMethod: ActionFunc) =>
+        actionMethod(currentState)
+      )
       .share()
-      .subscribe((currentState) => {
+      .subscribe(currentState => {
         this.currentModel.next(currentState);
       });
   }
+  /* tslint:enable:no-shadowed-variable */
 
   updateModel(action: ActionFunc) {
     this.model.next(action);
@@ -44,7 +50,7 @@ export class StateManagerService {
 
   updateModelFromObservable(stream: Observable<Model>) {
     stream.subscribe((model: Model) =>
-      this.model.next((currentState) =>
-        Object.assign({}, currentState, model)));
+      this.model.next(currentState => Object.assign({}, currentState, model))
+    );
   }
 }
