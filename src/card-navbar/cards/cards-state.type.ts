@@ -1,1 +1,1 @@
-export type CardsStateType = 'active'|'notActive';
+export type CardsStateType = 'active' | 'notActive';

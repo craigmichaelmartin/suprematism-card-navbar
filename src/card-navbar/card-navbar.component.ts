@@ -9,7 +9,6 @@ import { StateManagerService } from '../state-manager.service';
   styleUrls: ['./card-navbar.component.scss']
 })
 export class CardNavbarComponent implements OnInit {
-
   @Input() supreSelectedTab: string;
 
   @Input() supreSelectedCard: string;

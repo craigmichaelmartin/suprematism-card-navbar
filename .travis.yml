@@ -1,14 +1,12 @@
 language: node_js
-node_js: '6'
-cache: yarn
+node_js: '7'
 script:
-- npm run example &
-- npm run e2e-ci
+- npm run test:ci
 addons:
   sauce_connect:
     username: xerona
     access_key:
-      secure: 'Cv1lij1nq+ntytHqU0ZcCCllP5KlDUB8El2i6Xl7Hn8QCsUoecDDai6dNSYQPR3om59YMdAtW7Kp71fksSkcQ2SYy/bR7REJToCba6uGV0mI+zvQHrBe/4txwhTP31YCR1R17sccRMu8LLUa5sLmq74V60c/cj3zDPe01AWhs/SQ4UTy7jzLY1xxdkFvEddR6mIt8JmKPbfCRo6w8Y7c8fBvpv3NTBG2sLKRAdrpCvuYsgmnO3AZIeY7W6s6iskVukzx+kTpV4EiLwoE7TXc9euX5gND/p/OYwf2hNZwIHw5PBqcXLPRLYZJrRj/WATiuVaCqs8MLVvwcgSBnx5f5n8PyBhvjITx3kkQpr1kxqJMTF0ayQKIRfmAmmCEZGJ4T80SKlGMQPoOniDNFO6WfNqzJrTfJXDcUvKdq9joOGbnV3dtDtCjA00wWGpkE4GvcgAB/A9Jme+/WiGPA+s+JI5NBhMfnGaAAuRhTYeOYUOvY8rRvhK2HP5gTKOIBQH0lqPsWwacR96MlbzQV4XSmhTlgaJNnCJAB/dKl7LfVuh542+OrckN6WgB54Pf65mzA4PWtZVE7Vq9CUXsf2OnzomhUOl7zC3JHlZJZLxmAYXMn3MAnXDytIn/HFsfqArX4HHKQtHeYpq7LcPtd6anGWttK28UvTuUU1++ZjoIKbk='
+      secure:  'Cv1lij1nq+ntytHqU0ZcCCllP5KlDUB8El2i6Xl7Hn8QCsUoecDDai6dNSYQPR3om59YMdAtW7Kp71fksSkcQ2SYy/bR7REJToCba6uGV0mI+zvQHrBe/4txwhTP31YCR1R17sccRMu8LLUa5sLmq74V60c/cj3zDPe01AWhs/SQ4UTy7jzLY1xxdkFvEddR6mIt8JmKPbfCRo6w8Y7c8fBvpv3NTBG2sLKRAdrpCvuYsgmnO3AZIeY7W6s6iskVukzx+kTpV4EiLwoE7TXc9euX5gND/p/OYwf2hNZwIHw5PBqcXLPRLYZJrRj/WATiuVaCqs8MLVvwcgSBnx5f5n8PyBhvjITx3kkQpr1kxqJMTF0ayQKIRfmAmmCEZGJ4T80SKlGMQPoOniDNFO6WfNqzJrTfJXDcUvKdq9joOGbnV3dtDtCjA00wWGpkE4GvcgAB/A9Jme+/WiGPA+s+JI5NBhMfnGaAAuRhTYeOYUOvY8rRvhK2HP5gTKOIBQH0lqPsWwacR96MlbzQV4XSmhTlgaJNnCJAB/dKl7LfVuh542+OrckN6WgB54Pf65mzA4PWtZVE7Vq9CUXsf2OnzomhUOl7zC3JHlZJZLxmAYXMn3MAnXDytIn/HFsfqArX4HHKQtHeYpq7LcPtd6anGWttK28UvTuUU1++ZjoIKbk='
 
 # To update ownership
 # install travis cli with `gem install travis -v 1.8.6 --no-rdoc --no-ri`

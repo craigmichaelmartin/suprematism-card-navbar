@@ -118,7 +118,7 @@ describe('suprematism-card-navbar', function() {
       assertTabIsSelected(page, 'segments');
     });
     it('other tabs are not selected', function() {
-      expect(page.getActiveTabsCount()).toEqual(0);
+      expect<any>(page.getActiveTabsCount()).toEqual(0);
       assertTabIsNotActive(page, 'campaigns');
       assertTabIsNotActive(page, 'inventory');
       assertTabIsNotActive(page, 'user');
@@ -133,7 +133,7 @@ describe('suprematism-card-navbar', function() {
       page.navigateTo('segments/create');
     });
     it('should display the correct page content', () => {
-      expect(page.getPageHeaderText()).toEqual('segments: create');
+      expect<any>(page.getPageHeaderText()).toEqual('segments: create');
     });
     it('should render the correct styling for the tab', () => {
       assertTabIsSelected(page, 'segments');
@@ -157,7 +157,7 @@ describe('suprematism-card-navbar', function() {
           assertNoCardsShown(page);
         });
         it('no tabs should be active', function() {
-          expect(page.getActiveTabsCount()).toEqual(0);
+          expect<any>(page.getActiveTabsCount()).toEqual(0);
         });
       });
       describe('when hovered', function() {
@@ -172,7 +172,7 @@ describe('suprematism-card-navbar', function() {
           assertCardsShown(page, 4);
         });
         it('no tab should be active (because the hovered is selected)', function() {
-          expect(page.getActiveTabsCount()).toEqual(0);
+          expect<any>(page.getActiveTabsCount()).toEqual(0);
         });
       });
       describe('after hovered', function() {
@@ -188,7 +188,7 @@ describe('suprematism-card-navbar', function() {
           assertNoCardsShown(page);
         });
         it('no tabs should be active', function() {
-          expect(page.getActiveTabsCount()).toEqual(0);
+          expect<any>(page.getActiveTabsCount()).toEqual(0);
         });
       });
     });
@@ -204,7 +204,7 @@ describe('suprematism-card-navbar', function() {
           assertNoCardsShown(page);
         });
         it('no tabs should be active', function() {
-          expect(page.getActiveTabsCount()).toEqual(0);
+          expect<any>(page.getActiveTabsCount()).toEqual(0);
         });
       });
       describe('when hovered', function() {
@@ -222,7 +222,7 @@ describe('suprematism-card-navbar', function() {
           assertCardsShown(page, 3);
         });
         it('only one tab should be active', function() {
-          expect(page.getActiveTabsCount()).toEqual(1);
+          expect<any>(page.getActiveTabsCount()).toEqual(1);
         });
       });
       describe('after hovered', function() {
@@ -238,7 +238,7 @@ describe('suprematism-card-navbar', function() {
           assertNoCardsShown(page);
         });
         it('no tabs should be active', function() {
-          expect(page.getActiveTabsCount()).toEqual(0);
+          expect<any>(page.getActiveTabsCount()).toEqual(0);
         });
       });
     });
@@ -258,7 +258,7 @@ describe('suprematism-card-navbar', function() {
         expect(page.getCurrentUrl()).toContain('campaigns/option');
       });
       it('no tabs should be active', function() {
-        expect(page.getActiveTabsCount()).toEqual(0);
+        expect<any>(page.getActiveTabsCount()).toEqual(0);
       });
       it('should not have cards displayed', function() {
         assertNoCardsShown(page);
@@ -281,7 +281,7 @@ describe('suprematism-card-navbar', function() {
         assertCardIsNotActive(page, 'create');
       });
       it('no cards should be active', function() {
-        expect(page.getActiveCardsCount()).toEqual(0);
+        expect<any>(page.getActiveCardsCount()).toEqual(0);
       });
     });
     describe('resting', function() {
@@ -320,7 +320,7 @@ describe('suprematism-card-navbar', function() {
         page.hoverOnCard('library');
         page.hoverOnCard('compare');
         page.hoverOnCard('forecast');
-        expect(page.getActiveCardsCount()).toEqual(1);
+        expect<any>(page.getActiveCardsCount()).toEqual(1);
       });
       it('should act properly for multiple hovers', function() {
         page.hoverOnCard('create');
@@ -331,7 +331,7 @@ describe('suprematism-card-navbar', function() {
         assertCardIsNotActive(page, 'library');
         assertCardIsNotActive(page, 'compare');
         assertCardIsActive(page, 'forecast');
-        expect(page.getActiveCardsCount()).toEqual(1);
+        expect<any>(page.getActiveCardsCount()).toEqual(1);
       });
     });
     describe('clicking', function() {

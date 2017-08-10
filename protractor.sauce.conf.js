@@ -1,5 +1,5 @@
 /*global jasmine */
-var SpecReporter = require('jasmine-spec-reporter');
+const { SpecReporter } = require('jasmine-spec-reporter');
 
 exports.config = {
     // saucelabs
@@ -27,11 +27,17 @@ exports.config = {
         isVerbose: true,
         includeStackTrace: true
     },
-    useAllAngular2AppRoots: true,
+    beforeLaunch: function() {
+      require('ts-node').register({
+        project: 'e2e/tsconfig.e2e.json'
+      });
+    },
     onPrepare: function() {
-        require('ts-node').register({
-            project: 'e2e'
-        });
-        jasmine.getEnv().addReporter(new SpecReporter());
-    }
+      jasmine.getEnv().addReporter(new SpecReporter({
+        spec: {
+          displayStacktrace: true
+        }
+      })
+    );
+  }
 };

@@ -1,1 +1,5 @@
-export type MenuItemStateType = 'notActive' | 'active' | 'preSelected' | 'selected';
+export type MenuItemStateType =
+  | 'notActive'
+  | 'active'
+  | 'preSelected'
+  | 'selected';

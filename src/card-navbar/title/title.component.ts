@@ -4,4 +4,4 @@ import { Component } from '@angular/core';
   selector: 'supre-card-navbar-title',
   templateUrl: './title.component.html'
 })
-export class CardNavbarTitleComponent  { }
+export class CardNavbarTitleComponent {}
