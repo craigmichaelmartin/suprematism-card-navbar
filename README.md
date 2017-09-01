@@ -4,6 +4,7 @@
 
 An Angular 2 card navbar component.
 
+# DEPRECATED - Please use the [suprematism library](https://github.com/CINBCUniversal/suprematism)
 
 #### Installation
 ```bash
